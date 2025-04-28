@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.main-content {
+  min-height: calc(
+    100vh - 200px
+  ); /* 푸터가 항상 하단에 위치하도록 최소 높이 설정 */
+  padding-bottom: 20px;
+}
