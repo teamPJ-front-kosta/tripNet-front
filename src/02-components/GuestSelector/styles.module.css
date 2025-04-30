@@ -1,0 +1,186 @@
+.guestSelectorContainer {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 320px;
+  height: 280px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 767px) {
+  .guestSelectorContainer {
+    position: fixed;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    border-radius: 16px 16px 0 0;
+    z-index: 1050;
+  }
+}
+
+.guestTypeRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  margin-bottom: 15px;
+  padding: 5px 0;
+}
+
+.guestTypeLabel {
+  font-weight: 500;
+  font-size: 15px;
+  color: #333;
+}
+
+.guestTypeSubLabel {
+  font-size: 12px;
+  color: #777;
+  margin-top: 3px;
+}
+
+.countControls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.countButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background-color: white;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.countButton:disabled {
+  color: #ccc;
+  border-color: #eee;
+  cursor: not-allowed;
+}
+
+.countButton:not(:disabled):hover {
+  background-color: #f5f5f5;
+}
+
+.countValue {
+  font-size: 15px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.childAgesSection {
+  flex: 1;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  overflow-y: auto;
+}
+
+.childAgesTitle {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.childAgesTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+  max-height: 80px;
+  overflow-y: auto;
+}
+
+.childAgeTag {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.removeAgeButton {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 14px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.ageSelector {
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 10px;
+}
+
+.ageSelectorTitle {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.ageOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.ageOption {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ageOption:hover {
+  background-color: #f0f0f0;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.applyButton {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.applyButton:hover {
+  background-color: #1565c0;
+}

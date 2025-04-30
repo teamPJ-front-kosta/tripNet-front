@@ -1,70 +1,156 @@
-# Getting Started with Create React App
+# 🧭 tripNet 프론트엔드
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![tripNet Frontend](https://via.placeholder.com/800x400?text=tripNet+Frontend)
 
-## Available Scripts
+`tripNet`은 국내·해외 숙소, 티켓/투어 상품을 검색하고 예약할 수 있는 웹 기반 여행 플랫폼입니다.  
+본 프로젝트는 **KOSTA 팀 프로젝트**로 진행되었으며, Amadeus API를 활용해 실시간 숙소 데이터를 제공합니다.
 
-In the project directory, you can run:
+## ✨ 주요 기능
 
-### `npm start`
+- 국내/해외 숙소 검색
+- 숙소 상세 페이지
+- 인기 지역, 추천 배너 제공
+- 투어/티켓 상품 탐색
+- (개발 예정) 결제 및 예약 기능 연동
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ 기술 스택
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+| 영역       | 기술                                                  |
+| ---------- | ----------------------------------------------------- |
+| 프레임워크 | React                                                 |
+| 라우팅     | React Router                                          |
+| 스타일링   | CSS Modules                                           |
+| API 통신   | Axios                                                 |
+| 백엔드     | Node.js + Express (별도 `tripNet-backend` 리포지토리) |
+| 협업       | GitHub, Figma                                         |
 
-### `npm test`
+## 🚀 설치 및 실행 방법
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 사전 요구사항
 
-### `npm run build`
+- Node.js (v14 이상)
+- npm (v6 이상)
+- 백엔드 서버 실행 (`tripNet-backend` 필요)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 설치
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone https://github.com/your-username/tripNet-front.git
+cd tripNet-front
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 개발 서버 실행
 
-### `npm run eject`
+```bash
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+접속 주소: http://localhost:3000
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📁 디렉토리 구조
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+src/
+├── 01-assets/               # 이미지, 배너, 폰트 등 정적 리소스
+├── 02-components/           # 공통 UI 컴포넌트 (Header, Footer 등)
+├── 03-pages/                # 페이지별 디렉토리 (URL 단위)
+│   ├── Home/
+│   ├── ForeignAccommodations/
+│   ├── DomesticAccommodations/
+│   ├── TourTickets/
+│   ├── HotelDetail/
+│   └── TourDetail/
+├── 04-data/                 # 정적 데이터 및 더미 데이터
+├── 05-utils/                # 공통 함수 유틸리티 (국기 출력, 날짜 등)
+├── App.js                   # 전체 라우팅 및 Layout 설정
+└── index.js                 # 앱 진입점
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📖 디렉토리 설명
 
-## Learn More
+| 디렉토리       | 설명                                                             |
+| -------------- | ---------------------------------------------------------------- |
+| 01-assets/     | 이미지, 배너, 로고 등 import해서 쓰는 정적 리소스                |
+| 02-components/ | Header, Footer, 공통 검색창 등 여러 페이지에서 공유되는 컴포넌트 |
+| 03-pages/      | 각 기능별 페이지 단위 디렉토리 (기능별 역할 분담에 적합)         |
+| 04-data/       | 더미 JSON 데이터나 지역 리스트 등 정적인 데이터                  |
+| 05-utils/      | 국기 출력, 날짜 포맷 등 반복되는 함수들 저장                     |
+| App.js         | 전체 앱 구조 및 라우팅 담당                                      |
+| index.js       | React 앱 진입점 (root.render)                                    |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🔌 API 연동
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 사용 API
 
-### Code Splitting
+- GET `/api/accommodations`: 숙소 목록 조회
+- GET `/api/destinations`: 목적지 검색
+- GET `/`: 서버 상태 확인
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 예시 코드
 
-### Analyzing the Bundle Size
+```javascript
+const fetchRecommendedHotels = async () => {
+  try {
+    const res = await fetch("/api/accommodations");
+    const data = await res.json();
+    console.log(data);
+  } catch (err) {
+    console.error("숙소 데이터 실패", err);
+  }
+};
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 프록시 설정 (개발 중 CORS 문제 해결용)
 
-### Making a Progressive Web App
+```json
+// package.json
+"proxy": "http://localhost:3001"
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+개발 서버에서 `/api/xxx` 요청은 자동으로 백엔드로 프록시됩니다.
 
-### Advanced Configuration
+## 🌿 브랜치 전략 & 협업 규칙
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 기본 브랜치
 
-### Deployment
+- **main**: 배포 가능한 안정 버전
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 작업 브랜치 예시
 
-### `npm run build` fails to minify
+| 브랜치명                  | 담당자 | 역할            |
+| ------------------------- | ------ | --------------- |
+| bg                        | 병규   | 홈, 로그인      |
+| hhs-domesticAccommodation | 환성   | 국내 숙소       |
+| hyeeun-pages              | 혜은   | 해외 숙소, 기획 |
+| yoonbin-ticket            | 윤빈   | 투어/티켓       |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 작업 규칙
+
+- 직접 main에 커밋 ❌
+- 항상 개인 브랜치 → PR → 리뷰 → merge
+- PR 제목은 간단히, 커밋은 기능 단위로
+
+### 기본 작업 흐름
+
+```bash
+git checkout main
+git pull origin main
+
+git checkout hyeeun-pages
+# 작업
+git add .
+git commit -m "해외 숙소 검색 UI 수정"
+git push origin hyeeun-pages
+```
+
+GitHub에서 PR 생성 → 리뷰 후 merge
+
+## 👥 팀원 소개
+
+| 이름   | 역할                         |
+| ------ | ---------------------------- |
+| 조윤빈 | 투어/티켓 UI 개발            |
+| 이병규 | 홈 페이지, 로그인            |
+| 황환성 | 국내 숙소, 지도 연동         |
+| 이혜은 | 해외 숙소, 전체 기획 및 발표 |
