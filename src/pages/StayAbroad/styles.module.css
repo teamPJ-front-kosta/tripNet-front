@@ -1,307 +1,421 @@
 .mainClass {
-    flex: 1;
-    width: 1060px;
-    max-width: 1060px;
-    margin: 0 auto 120px;
-    background-color: transparent;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
 }
 
-.searchFilterSection{
-    margin-top: 100px;
+/* 헤더 스타일 */
+.headerWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #eee;
 }
 
-.titleBar{
-    padding: 0 8px;
-    margin-bottom: 12px;
+.logoArea {
+  display: flex;
+  align-items: center;
 }
 
-.titleBarName{
-    font-size: 26px;
-    font-weight: 700;
-    line-height: 124%;
-    letter-spacing: -0.01em;
-    white-space: pre-wrap;
-    color: inherit;
-    color: #141719;
+.logo {
+  height: 30px;
+  margin-right: 20px;
 }
 
-.filterTab1{
-    border-bottom: 1px solid #e9ecef;
+.logo img {
+  height: 100%;
 }
 
-.filterTab2{
-    padding: 0 20px;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex
-;
-    width: 100%;
-    background-color: #FFFFFF;
+.searchBar {
+  position: relative;
+  width: 300px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: #f5f6f7;
+  display: flex;
+  align-items: center;
 }
 
-.hotelBtn{
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex
-;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    padding: 0 14px;
-    cursor: pointer;
+.searchBar input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  padding: 0 16px;
+  font-size: 14px;
+  outline: none;
 }
 
-.hotelTextArea{
-    position: relative;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex
-;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    padding: 15px 0 16px;
+.searchIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #777;
 }
 
-.hotelText{
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 124%;
-    letter-spacing: -0.02em;
-    text-align: center;
-    white-space: pre-wrap;
-    color: inherit;
-    color: #141719;
-    white-space: nowrap;
-    width: 100%;
+.loginArea {
+  display: flex;
+  align-items: center;
 }
 
-.koreanGuestHouseBtn{
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex
-;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    padding: 0 14px;
-    cursor: pointer;
+.loginButton {
+  border: none;
+  background: none;
+  color: #666;
+  font-size: 14px;
+  margin-right: 16px;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
-.koreanGuestHouseTextArea{
-    position: relative;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex
-;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    padding: 15px 0 16px;
+.signupButton {
+  background-color: #0080ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
-.koreanGuestHouseText{
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 124%;
-    letter-spacing: -0.02em;
-    text-align: center;
-    white-space: pre-wrap;
-    color: inherit;
-    color: #666d75;
-    white-space: nowrap;
-    width: 100%;
+/* 네비게이션 바 */
+.navBar {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
 }
 
+.navList {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-x: auto;
+  white-space: nowrap;
+}
 
-.filterInput {
-    width: 100%;
-    max-width: 1060px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+.navItem {
+  padding: 16px 20px 16px 0;
+  color: #555;
+  font-size: 15px;
+  cursor: pointer;
+  position: relative;
+}
+
+.navItem.active {
+  color: #0080ff;
+  font-weight: 600;
+}
+
+.navItem.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #0080ff;
+}
+
+.navItem.more {
+  display: flex;
+  align-items: center;
+}
+
+.pageTitle {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 40px 0;
+  text-align: left;
+}
+
+/* 탭 스타일 */
+.tabsWrapper {
+  margin-bottom: 30px;
+  overflow: hidden;
+  position: relative;
+}
+
+.tabsContainer {
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 1px;
+  overflow-x: auto;
+  white-space: nowrap;
+  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.tabsContainer::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.tabActive,
+.tab {
+  font-size: 16px;
+  padding: 0 20px 16px 0;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.tabActive {
+  color: #0080ff;
+  font-weight: 600;
+}
+
+.tabActive::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #0080ff;
+}
+
+.tab {
+  color: #888;
+  margin-left: 24px;
+}
+
+/* 검색 폼 스타일 */
+.searchFormContainer {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 40px;
+}
+
+.searchGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
 }
 
 .searchInput {
-    border-radius: 12px;
-    background-color: #f5f6f7;
+  background-color: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  position: relative;
 }
 
-.inputCommon {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex
-;
-    height: 56px;
-    cursor: pointer;
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+  color: #666;
+  flex-shrink: 0;
 }
 
-.inputAreaCommon {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 0 24px;
+.inputField {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
 }
 
-.inputTextAreaCommon {
-    display: flex;
-    align-items: center;
+.inputText {
+  color: #666;
+  font-size: 16px;
 }
 
-.inputTextCommon {
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 138%;
-    letter-spacing: -0.02em;
-    color: #adb5bd;
+.locationDropdown {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background-color: #fff;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  max-height: 250px;
+  overflow-y: auto;
 }
 
-.whereInput {
-    composes: inputCommon;
+.locationOption {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
 }
 
-.whereInputArea{
-    composes: inputAreaCommon;
+.locationOption:hover {
+  background-color: #f5f5f5;
 }
 
-.whereInputTextArea2{
-    composes: inputTextAreaCommon;
+.searchButton {
+  width: 100%;
+  padding: 16px;
+  background-color: #0080ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.whereInputText{
-    composes: inputTextCommon;
+/* 프로모션 섹션 */
+.contentSection {
+  width: 100%;
+  margin-bottom: 40px;
 }
 
-
-.whenInput {
-    composes: inputCommon;
+.eventSection {
+  margin-top: 20px;
 }
 
-.whenInputArea{
-    composes: inputAreaCommon;
+.sectionTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
-.whenInputTextArea2{
-    composes: inputTextAreaCommon;
+.eventCardList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
-.whenInputText{
-    composes: inputTextCommon;
+.eventCardWrapper {
+  width: 100%;
 }
 
-
-.guestInput {
-    composes: inputCommon;
+/* 반응형 스타일 */
+@media (max-width: 1200px) {
+  .eventCardList {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-.guestInputArea{
-    composes: inputAreaCommon;
+@media (max-width: 992px) {
+  .eventCardList {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.guestInputTextArea2{
-    composes: inputTextAreaCommon;
+/* 화면이 작을 때 요소들이 사라지는 구간 */
+@media (max-width: 768px) {
+  /* 헤더 관련 스타일 - 줄어들 때 사라짐 */
+  .eventCardList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* 이 크기에서 검색 필드는 세로로 변경되고 아이콘 크기 조정 */
+  .iconWrapper svg {
+    width: 18px;
+    height: 18px;
+  }
 }
 
-.guestInputText {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 138%;
-    letter-spacing: -0.02em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: #141719;
-    width: 100%;
+@media (max-width: 576px) {
+  .eventCardList {
+    grid-template-columns: 1fr;
+  }
+
+  .searchFormContainer {
+    padding: 16px;
+  }
+
+  .searchInput {
+    padding: 12px;
+  }
+
+  .iconWrapper {
+    margin-right: 12px;
+  }
+
+  .inputField,
+  .inputText {
+    font-size: 14px;
+  }
+
+  .searchButton {
+    padding: 12px;
+    font-size: 14px;
+  }
 }
 
+/* 화면 회전 및 기기별 대응 */
+@media (orientation: landscape) and (max-width: 768px) {
+  /* 가로 모드일 때 적용할 스타일 */
+  .searchGroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
 
-.searchBanner{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex
-;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    height: 48px;
-    margin-top: 12px;
+  .searchInput:nth-child(3) {
+    grid-column: span 2;
+  }
 }
 
-
-.searchBanner>button{
-    width: 100%;
-    border-radius: 12px;
+/* 인쇄 스타일 */
+@media print {
+  .searchFormContainer,
+  .tabsWrapper {
+    display: none;
+  }
 }
 
-
-.searchBannerBtn{
-    cursor: not-allowed;
-    color: #ced4da;
-    background-color: #f8f9fa;
-
+/* 로딩, 에러, 데이터 없음 상태 관련 스타일 */
+.loadingContainer,
+.errorContainer,
+.noDataContainer {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin: 10px 0;
+  width: 100%;
 }
 
-.searchBannerTextArea{
-    padding: 0px 4px;
-;
-}   
-
-.searchBannerText{
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 124%;
-    letter-spacing: -0.02em;
-    white-space: pre-wrap;
-    color: inherit;
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 128, 255, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid #0080ff;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
 }
 
-
-
-.promoSection{
-
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.promoBanner{
-    background-color: rgb(255, 255, 255);
+.loadingContainer p {
+  color: #0080ff;
+  font-weight: 500;
 }
 
-.eventCardList{
-    background-color: rgb(255, 255, 255);
+.errorContainer p {
+  color: #e74c3c;
+  font-weight: 500;
 }
 
+.noDataContainer p {
+  color: #7f8c8d;
+  font-weight: 500;
+}

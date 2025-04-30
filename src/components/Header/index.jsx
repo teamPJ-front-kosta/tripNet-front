@@ -29,7 +29,7 @@ function Header() {
                     <li><Link to="/">홈</Link></li>
                     <li>항공</li>
                     <li><Link to="/stay-abroad">해외 숙소</Link></li>
-                    <li>국내 숙소</li>
+                    <li><Link to="/domestic-accommodation">국내 숙소</Link></li>
                     <li>투어·티켓</li>
                     <li><Link to="/korean-guest-house">한인민박</Link></li>
                     <li>해외 골프</li>
