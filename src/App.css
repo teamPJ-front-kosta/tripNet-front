@@ -1,0 +1,164 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: #ffffff; 
+  font-family: sans-serif;
+}
+
+.header {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-top {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo-search {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #00aaff;
+}
+
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px; 
+  margin: 0 auto;
+  height: 48px; /* 원본과 동일한 높이로 맞추기 */
+}
+
+.search-input {
+  width: 100%;
+  height: 100%;
+  background: #f5f6f7;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  padding: 0px 54px 0px 20px; 
+  color: #495057;
+  box-sizing: border-box;
+}
+
+.search-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 54px; 
+  height: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.search-button img {
+  width: 20px;
+  height: 20px;
+}
+
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.partner-login {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.login-join {
+  background-color: #00aaff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.header-nav {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  padding: 10px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  background-color: #fafafa;
+}
+
+.header-nav a {
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.header-nav a:hover {
+  color: #00aaff;
+}
+
+/* Main Banner 심플 스타일 */
+.main-banner {
+  background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+
+.main-banner h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.main-banner p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.main-banner button {
+  padding: 0.8rem 2rem;
+  background-color: #00aaff;
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.main-banner button:hover {
+  background-color: #008ecc;
+}
+
