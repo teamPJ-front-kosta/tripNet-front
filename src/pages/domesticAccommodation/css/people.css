@@ -1,0 +1,76 @@
+.people-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  padding: 20px;
+  position: absolute;
+  z-index: 1000;
+  margin-top: 10px;
+}
+
+.people-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.people-row:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
+
+.people-type {
+  flex: 1;
+}
+
+.people-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.people-description {
+  font-size: 13px;
+  color: #666;
+}
+
+.people-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.control-button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+.control-button:hover:not(.disabled) {
+  border-color: #2b96ed;
+  color: #2b96ed;
+}
+
+.control-button.disabled {
+  border-color: #eee;
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.people-count {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  min-width: 24px;
+  text-align: center;
+} 
