@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import styles from "./styles.module.css";
-import EventCard from "../../components/EventCard";
+import EventCard from "../../02-components/EventCard";
 
 const HotelDetail = () => {
   const { cityCode, hotelId } = useParams();
@@ -15,9 +15,7 @@ const HotelDetail = () => {
       setLoading(true);
       try {
         // API 호출하여 모든 호텔 데이터 가져오기
-        const response = await fetch(
-          "http://localhost:3001/api/accommodations"
-        );
+        const response = await fetch("/api/accommodations");
         const data = await response.json();
 
         // 현재 도시 코드에 맞는 도시 데이터 찾기

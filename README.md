@@ -1,158 +1,156 @@
-# tripNet 프론트엔드
+# 🧭 tripNet 프론트엔드
 
 ![tripNet Frontend](https://via.placeholder.com/800x400?text=tripNet+Frontend)
 
-## 📝 프로젝트 소개
-
-tripNet은 전 세계 다양한 도시의 호텔과 숙소를 검색하고 예약할 수 있는 웹 애플리케이션입니다.  
-본 프로젝트는 KOSTA 팀 프로젝트로 진행되었으며, 실시간 호텔 데이터는 Amadeus API를 통해 가져옵니다.
+`tripNet`은 국내·해외 숙소, 티켓/투어 상품을 검색하고 예약할 수 있는 웹 기반 여행 플랫폼입니다.  
+본 프로젝트는 **KOSTA 팀 프로젝트**로 진행되었으며, Amadeus API를 활용해 실시간 숙소 데이터를 제공합니다.
 
 ## ✨ 주요 기능
 
-- 지역별 호텔 검색 및 추천
-- 호텔 상세 정보 확인
-- 비슷한 다른 호텔 추천
-- (개발 예정) 호텔 예약 기능 연동
+- 국내/해외 숙소 검색
+- 숙소 상세 페이지
+- 인기 지역, 추천 배너 제공
+- 투어/티켓 상품 탐색
+- (개발 예정) 결제 및 예약 기능 연동
 
-## 🔧 기술 스택
+## 🛠️ 기술 스택
 
-- **React**: 프론트엔드 라이브러리
-- **React Router**: 클라이언트 사이드 라우팅
-- **CSS Modules**: 컴포넌트별 스타일 관리
-- **Axios**: API 통신
-- **Node.js/Express (tripNet-backend)**: 백엔드 API 서버
+| 영역       | 기술                                                  |
+| ---------- | ----------------------------------------------------- |
+| 프레임워크 | React                                                 |
+| 라우팅     | React Router                                          |
+| 스타일링   | CSS Modules                                           |
+| API 통신   | Axios                                                 |
+| 백엔드     | Node.js + Express (별도 `tripNet-backend` 리포지토리) |
+| 협업       | GitHub, Figma                                         |
 
 ## 🚀 설치 및 실행 방법
 
 ### 사전 요구사항
 
-- Node.js (v14.0.0 이상)
-- npm (v6.0.0 이상)
-- tripNet-backend 서버 실행 필요
+- Node.js (v14 이상)
+- npm (v6 이상)
+- 백엔드 서버 실행 (`tripNet-backend` 필요)
 
 ### 설치
 
 ```bash
-# 저장소 클론
 git clone https://github.com/your-username/tripNet-front.git
-
-# 디렉토리 이동
 cd tripNet-front
-
-# 의존성 설치
 npm install
 ```
 
 ### 개발 서버 실행
 
 ```bash
-# 개발 서버 실행
 npm start
 ```
 
-접속: http://localhost:3000
+접속 주소: http://localhost:3000
 
-### 빌드 (배포용)
-
-```bash
-# 프로덕션용 빌드
-npm run build
-```
-
-※ 일반 로컬 개발자는 필요 없음
-
-## 📂 디렉토리 구조
+## 📁 디렉토리 구조
 
 ```
-tripNet-front/
-├── public/                 # 정적 파일
-├── src/                    # 소스 코드
-│   ├── components/         # 재사용 가능한 컴포넌트
-│   │   ├── EventCard/      # 호텔 카드 컴포넌트
-│   │   ├── Footer/         # 푸터
-│   │   └── Header/         # 헤더
-│   ├── pages/              # 페이지 컴포넌트
-│   │   ├── StayAbroad/     # 해외 숙소 페이지
-│   │   └── HotelDetail/    # 호텔 상세 페이지
-│   ├── App.js              # 메인 컴포넌트
-│   └── index.js            # 엔트리 포인트
-└── package.json            # 의존성 관리
+src/
+├── 01-assets/               # 이미지, 배너, 폰트 등 정적 리소스
+├── 02-components/           # 공통 UI 컴포넌트 (Header, Footer 등)
+├── 03-pages/                # 페이지별 디렉토리 (URL 단위)
+│   ├── Home/
+│   ├── ForeignAccommodations/
+│   ├── DomesticAccommodations/
+│   ├── TourTickets/
+│   ├── HotelDetail/
+│   └── TourDetail/
+├── 04-data/                 # 정적 데이터 및 더미 데이터
+├── 05-utils/                # 공통 함수 유틸리티 (국기 출력, 날짜 등)
+├── App.js                   # 전체 라우팅 및 Layout 설정
+└── index.js                 # 앱 진입점
 ```
 
-## 🔗 API 연동
+## 📖 디렉토리 설명
 
-tripNet은 다음과 같은 API 엔드포인트를 사용합니다:
+| 디렉토리       | 설명                                                             |
+| -------------- | ---------------------------------------------------------------- |
+| 01-assets/     | 이미지, 배너, 로고 등 import해서 쓰는 정적 리소스                |
+| 02-components/ | Header, Footer, 공통 검색창 등 여러 페이지에서 공유되는 컴포넌트 |
+| 03-pages/      | 각 기능별 페이지 단위 디렉토리 (기능별 역할 분담에 적합)         |
+| 04-data/       | 더미 JSON 데이터나 지역 리스트 등 정적인 데이터                  |
+| 05-utils/      | 국기 출력, 날짜 포맷 등 반복되는 함수들 저장                     |
+| App.js         | 전체 앱 구조 및 라우팅 담당                                      |
+| index.js       | React 앱 진입점 (root.render)                                    |
 
-- **GET /api/accommodations**: 추천 숙소 목록 조회
-- **GET /api/destinations**: 목적지 검색
-- **GET /**: 서버 상태 확인
+## 🔌 API 연동
 
-### API 호출 예시:
+### 사용 API
+
+- GET `/api/accommodations`: 숙소 목록 조회
+- GET `/api/destinations`: 목적지 검색
+- GET `/`: 서버 상태 확인
+
+### 예시 코드
 
 ```javascript
-// 추천 숙소 목록 가져오기
 const fetchRecommendedHotels = async () => {
   try {
-    const response = await fetch("http://localhost:3001/api/accommodations");
-    const data = await response.json();
+    const res = await fetch("/api/accommodations");
+    const data = await res.json();
     console.log(data);
-  } catch (error) {
-    console.error("호텔 데이터 가져오기 실패:", error);
+  } catch (err) {
+    console.error("숙소 데이터 실패", err);
   }
 };
 ```
 
-## 🌿 브랜치 전략
+### 프록시 설정 (개발 중 CORS 문제 해결용)
 
-tripNet 프로젝트는 다음 Git 브랜치 전략을 사용합니다:
+```json
+// package.json
+"proxy": "http://localhost:3001"
+```
+
+개발 서버에서 `/api/xxx` 요청은 자동으로 백엔드로 프록시됩니다.
+
+## 🌿 브랜치 전략 & 협업 규칙
 
 ### 기본 브랜치
 
-- **main**: 최종 배포 가능한 안정된 코드
+- **main**: 배포 가능한 안정 버전
 
-### 개인 작업 브랜치
+### 작업 브랜치 예시
 
-- **bg**: 병규 (홈, 로그인 페이지)
-- **hhs-domesticAccommodation**: 환성 (국내 숙소 페이지)
-- **hyeeun-pages**: 혜은 (기획, 해외숙소 API 연동)
-- **yoonbin-ticket**: 윤빈 (티켓/투어 페이지)
+| 브랜치명                  | 담당자 | 역할            |
+| ------------------------- | ------ | --------------- |
+| bg                        | 병규   | 홈, 로그인      |
+| hhs-domesticAccommodation | 환성   | 국내 숙소       |
+| hyeeun-pages              | 혜은   | 해외 숙소, 기획 |
+| yoonbin-ticket            | 윤빈   | 투어/티켓       |
 
-### ✅ 작업 규칙
+### 작업 규칙
 
-- 직접 main에 커밋 금지
-- 항상 개인 브랜치 → main으로 PR
-- PR 작성할 때 설명 간단히 추가
-- 커밋은 적당한 단위로 (너무 쪼개지 말기)
+- 직접 main에 커밋 ❌
+- 항상 개인 브랜치 → PR → 리뷰 → merge
+- PR 제목은 간단히, 커밋은 기능 단위로
 
-### 📚 기본 작업 흐름
+### 기본 작업 흐름
 
 ```bash
-# 1. main 최신 코드 가져오기
 git checkout main
 git pull origin main
 
-# 2. 개인 작업 브랜치로 이동
 git checkout hyeeun-pages
-
-# 3. 작업 및 커밋
+# 작업
 git add .
-git commit -m "숙소 추천 UI 수정"
-
-# 4. 개인 브랜치 Push
+git commit -m "해외 숙소 검색 UI 수정"
 git push origin hyeeun-pages
-
-# 5. GitHub에서 PR(Pull Request) 생성
 ```
 
-### 🧩 주의사항
+GitHub에서 PR 생성 → 리뷰 후 merge
 
-- PR 제목과 내용은 간결하고 명확하게
-- 대규모 변경사항은 팀원과 상의 후 진행
-- 필요시 새 브랜치 따서 작업 (ex. 디자인 수정 등)
+## 👥 팀원 소개
 
-## 👨‍💻 개발팀 소개
-
-- **조윤빈**: 프론트엔드 개발
-- **이병규**: 백엔드 개발
-- **황환성**: 디자인 및 프론트엔드 개발
-- **이혜은**: 프로젝트 관리 및 API 연동
+| 이름   | 역할                         |
+| ------ | ---------------------------- |
+| 조윤빈 | 투어/티켓 UI 개발            |
+| 이병규 | 홈 페이지, 로그인            |
+| 황환성 | 국내 숙소, 지도 연동         |
+| 이혜은 | 해외 숙소, 전체 기획 및 발표 |
