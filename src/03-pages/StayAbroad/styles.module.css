@@ -1,0 +1,307 @@
+.mainClass {
+    flex: 1;
+    width: 1060px;
+    max-width: 1060px;
+    margin: 0 auto 120px;
+    background-color: transparent;
+}
+
+.searchFilterSection{
+    margin-top: 100px;
+}
+
+.titleBar{
+    padding: 0 8px;
+    margin-bottom: 12px;
+}
+
+.titleBarName{
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 124%;
+    letter-spacing: -0.01em;
+    white-space: pre-wrap;
+    color: inherit;
+    color: #141719;
+}
+
+.filterTab1{
+    border-bottom: 1px solid #e9ecef;
+}
+
+.filterTab2{
+    padding: 0 20px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
+;
+    width: 100%;
+    background-color: #FFFFFF;
+}
+
+.hotelBtn{
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
+;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0 14px;
+    cursor: pointer;
+}
+
+.hotelTextArea{
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
+;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 15px 0 16px;
+}
+
+.hotelText{
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 124%;
+    letter-spacing: -0.02em;
+    text-align: center;
+    white-space: pre-wrap;
+    color: inherit;
+    color: #141719;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.koreanGuestHouseBtn{
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
+;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0 14px;
+    cursor: pointer;
+}
+
+.koreanGuestHouseTextArea{
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
+;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 15px 0 16px;
+}
+
+.koreanGuestHouseText{
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 124%;
+    letter-spacing: -0.02em;
+    text-align: center;
+    white-space: pre-wrap;
+    color: inherit;
+    color: #666d75;
+    white-space: nowrap;
+    width: 100%;
+}
+
+
+.filterInput {
+    width: 100%;
+    max-width: 1060px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.searchInput {
+    border-radius: 12px;
+    background-color: #f5f6f7;
+}
+
+.inputCommon {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
+;
+    height: 56px;
+    cursor: pointer;
+}
+
+.inputAreaCommon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 24px;
+}
+
+.inputTextAreaCommon {
+    display: flex;
+    align-items: center;
+}
+
+.inputTextCommon {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 138%;
+    letter-spacing: -0.02em;
+    color: #adb5bd;
+}
+
+.whereInput {
+    composes: inputCommon;
+}
+
+.whereInputArea{
+    composes: inputAreaCommon;
+}
+
+.whereInputTextArea2{
+    composes: inputTextAreaCommon;
+}
+
+.whereInputText{
+    composes: inputTextCommon;
+}
+
+
+.whenInput {
+    composes: inputCommon;
+}
+
+.whenInputArea{
+    composes: inputAreaCommon;
+}
+
+.whenInputTextArea2{
+    composes: inputTextAreaCommon;
+}
+
+.whenInputText{
+    composes: inputTextCommon;
+}
+
+
+.guestInput {
+    composes: inputCommon;
+}
+
+.guestInputArea{
+    composes: inputAreaCommon;
+}
+
+.guestInputTextArea2{
+    composes: inputTextAreaCommon;
+}
+
+.guestInputText {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 138%;
+    letter-spacing: -0.02em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #141719;
+    width: 100%;
+}
+
+
+.searchBanner{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
+;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 48px;
+    margin-top: 12px;
+}
+
+
+.searchBanner>button{
+    width: 100%;
+    border-radius: 12px;
+}
+
+
+.searchBannerBtn{
+    cursor: not-allowed;
+    color: #ced4da;
+    background-color: #f8f9fa;
+
+}
+
+.searchBannerTextArea{
+    padding: 0px 4px;
+;
+}   
+
+.searchBannerText{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 124%;
+    letter-spacing: -0.02em;
+    white-space: pre-wrap;
+    color: inherit;
+}
+
+
+
+.promoSection{
+
+}
+
+.promoBanner{
+    background-color: rgb(255, 255, 255);
+}
+
+.eventCardList{
+    background-color: rgb(255, 255, 255);
+}
+
