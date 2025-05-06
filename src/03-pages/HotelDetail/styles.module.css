@@ -100,17 +100,101 @@
 }
 
 .similarGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  display: flex;
+  gap: 28px;
+  justify-content: flex-start;
 }
 
 .similarHotelCard {
-  transition: transform 0.3s;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  width: 320px;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s;
 }
 
 .similarHotelCard:hover {
-  transform: translateY(-5px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px) scale(1.03);
+}
+
+.similarCardImageWrap {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #f8f8f8;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.similarCardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.similarCardInfo {
+  padding: 18px 18px 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.similarCardHotelName {
+  font-size: 17px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.similarCardRatingRow {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 15px;
+  color: #444;
+}
+
+.similarCardStar {
+  color: #f5a623;
+  font-size: 16px;
+}
+
+.similarCardRating {
+  font-weight: 600;
+  margin-right: 2px;
+}
+
+.similarCardReviewCount {
+  color: #888;
+  font-size: 14px;
+}
+
+.similarCardPrice {
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+  margin: 2px 0 0 0;
+}
+
+.similarCardGrade {
+  font-size: 14px;
+  color: #666;
+}
+
+.similarCardMargin {
+  font-size: 15px;
+  color: #00b894;
+  font-weight: 700;
 }
 
 .bookingSection {
@@ -226,4 +310,183 @@
     padding: 12px 30px;
     font-size: 16px;
   }
+
+  .similarGrid {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .similarHotelCard {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+.mapSection {
+  width: 100%;
+  max-width: 700px;
+  margin: 40px auto 32px auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 28px 32px 24px 32px;
+}
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #222;
+}
+.mapBox {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 18px;
+  min-height: 260px;
+}
+.addressRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: #444;
+}
+.addressIcon {
+  font-size: 18px;
+}
+.addressText {
+  font-size: 16px;
+  color: #222;
+  word-break: break-all;
+}
+
+.detailSection {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 18px auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  padding: 28px 32px 24px 32px;
+  box-sizing: border-box;
+}
+
+.reviewHeader {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 18px;
+  gap: 8px;
+}
+.reviewStar {
+  color: #f5a623;
+  font-size: 24px;
+}
+.reviewScore {
+  font-size: 22px;
+  font-weight: 700;
+  margin-right: 4px;
+}
+.reviewCount {
+  color: #888;
+  font-size: 16px;
+  font-weight: 400;
+}
+.reviewList {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  margin-bottom: 18px;
+  position: relative;
+  min-height: 200px;
+}
+.reviewCard {
+  min-width: 260px;
+  max-width: 320px;
+  background: #f8f9fa;
+  border-radius: 14px;
+  padding: 22px 18px 18px 18px;
+  font-size: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 6px;
+}
+.reviewCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.reviewCardStar {
+  color: #f5a623;
+  font-weight: 600;
+}
+.reviewCardDate {
+  color: #aaa;
+  font-size: 13px;
+}
+.reviewCardText {
+  color: #222;
+  margin-bottom: 6px;
+}
+.reviewCardUser {
+  color: #888;
+  font-size: 14px;
+  font-weight: 500;
+}
+.reviewMoreBtn {
+  display: block;
+  width: 100%;
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 13px 0;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0 auto 0 auto;
+  margin-top: 10px;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.reviewMoreBtn:hover {
+  background: #111;
+}
+.reviewArrowLeft,
+.reviewArrowRight {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 26px;
+  color: #222;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, box-shadow 0.2s;
+  opacity: 0.95;
+}
+.reviewArrowLeft {
+  left: -22px;
+}
+.reviewArrowRight {
+  right: -22px;
+}
+.reviewArrowLeft:disabled,
+.reviewArrowRight:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
 }

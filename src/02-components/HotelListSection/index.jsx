@@ -33,7 +33,7 @@ const HotelListSection = ({ loading, error, hotels }) => {
       <div className={styles.hotelGrid}>
         {hotels.map((hotel) => (
           <EventCard
-            key={hotel.id}
+            key={hotel.hotelId}
             title={hotel.title}
             subtitle={hotel.subtitle}
             imageUrl={hotel.imageUrl}

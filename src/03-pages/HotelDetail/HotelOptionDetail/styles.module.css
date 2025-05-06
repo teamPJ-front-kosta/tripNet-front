@@ -1,0 +1,217 @@
+.optionDetailContainer {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 0 0 120px 0;
+  position: relative;
+}
+.optionFilterBox {
+  background: #f8f9fa;
+  border-radius: 12px 12px 0 0;
+  padding: 18px 24px 10px 24px;
+  font-size: 16px;
+  color: #333;
+}
+.optionFilterRow {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.filterItem {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 16px;
+  color: #444;
+}
+.filterIcon {
+  font-size: 20px;
+  color: #888;
+}
+.roomSummaryBox {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 24px 8px 24px;
+}
+.roomThumb {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: #eee;
+}
+.roomSummaryInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.roomName {
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+}
+.roomDatePeople {
+  font-size: 15px;
+  color: #888;
+}
+.optionList {
+  padding: 0 24px;
+  margin-top: 8px;
+  max-height: 340px;
+  overflow-y: auto;
+}
+.optionListTitle {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #222;
+}
+.optionRequired {
+  color: #1976d2;
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: 6px;
+}
+.optionItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 0 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+}
+.optionItem:last-child {
+  border-bottom: none;
+}
+.optionItem input[type="radio"] {
+  margin-top: 6px;
+  accent-color: #1976d2;
+  width: 20px;
+  height: 20px;
+}
+.optionInfoBox {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.optionRefundRow {
+  margin-bottom: 2px;
+}
+.refundBadgeNo {
+  color: #d14343;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.refundBadgeYes {
+  color: #1a7f37;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.refundDeadline {
+  color: #888;
+  font-size: 13px;
+  margin-left: 4px;
+}
+.optionName {
+  font-size: 16px;
+  font-weight: 500;
+  color: #222;
+}
+.optionPriceRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.optionOriginalPrice {
+  color: #d14343;
+  font-size: 15px;
+  text-decoration: line-through;
+  font-weight: 400;
+}
+.optionPrice {
+  color: #d14343;
+  font-size: 20px;
+  font-weight: 700;
+}
+.optionMargin {
+  color: #00b894;
+  font-size: 15px;
+  font-weight: 600;
+  margin-left: 6px;
+}
+.optionTax {
+  color: #888;
+  font-size: 14px;
+  margin-top: 2px;
+}
+.stickyFooter {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 100%;
+  max-width: 700px;
+  background: #fff;
+  min-height: 72px;
+  padding: 16px 24px;
+  box-shadow: 0px -0.5px 0px rgba(0, 0, 0, 0.02),
+    0px -1px 2px rgba(0, 0, 0, 0.03), 0px -2px 4px rgba(0, 0, 0, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+.stickyPrice {
+  font-size: 22px;
+  font-weight: 700;
+  color: #222;
+}
+.stickyMargin {
+  color: #00b894;
+  font-size: 15px;
+  font-weight: 600;
+  margin-left: 6px;
+}
+.stickyReserveBtn {
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 13px 38px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.stickyReserveBtn:hover {
+  background: #111;
+}
+@media (max-width: 768px) {
+  .optionDetailContainer {
+    max-width: 100%;
+    border-radius: 0;
+    padding: 0 0 100px 0;
+  }
+  .optionFilterBox,
+  .roomSummaryBox,
+  .optionList {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .stickyFooter {
+    max-width: 100%;
+    padding: 12px 10px;
+  }
+}

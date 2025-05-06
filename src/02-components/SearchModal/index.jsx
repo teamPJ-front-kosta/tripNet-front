@@ -1,5 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.css";
+import { cityCodeMap } from "../../04-data/destinations";
+import { Link } from "react-router-dom";
+
+// 도시명으로 도시코드 찾기 위한 역방향 매핑 추가
+const cityToCodeMap = Object.entries(cityCodeMap).reduce(
+  (acc, [code, city]) => {
+    // 도시 이름에서 괄호 부분 제거하여 기본 매핑
+    const baseName = city.split(" (")[0];
+    acc[baseName] = code;
+
+    // '하와이' 추가 매핑
+    if (code === "HNL") {
+      acc["하와이"] = code;
+    }
+
+    return acc;
+  },
+  {}
+);
 
 const SearchModal = ({
   searchLocation,
@@ -15,6 +34,33 @@ const SearchModal = ({
   getLocationDescription,
   onClose,
 }) => {
+  // 지원하지 않는 도시 검색 시 안내 메시지 표시 상태
+  const [notSupportedMessage, setNotSupportedMessage] = useState(false);
+
+  // 검색 입력 처리 수정 - 지원 도시만 필터링
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+
+    // 검색어가 없는 경우
+    if (value.trim() === "") {
+      setNotSupportedMessage(false);
+      handleLocationInputChange(e); // 원래 핸들러 호출
+      return;
+    }
+
+    // 기존 핸들러 호출하여 filteredOptions 업데이트
+    handleLocationInputChange(e);
+
+    // 지원 도시 확인 - cityCodeMap의 값(도시명) 중에 있는지 체크
+    const supportedCities = Object.values(cityCodeMap);
+    const matchedCities = supportedCities.filter((city) =>
+      city.toLowerCase().includes(value.trim().toLowerCase())
+    );
+
+    // 매칭된 도시가 없으면 안내 메시지 표시
+    setNotSupportedMessage(matchedCities.length === 0);
+  };
+
   return (
     <div className={styles.searchModalOverlay} onClick={onClose}>
       <div
@@ -47,9 +93,9 @@ const SearchModal = ({
               </div>
               <input
                 type="text"
-                placeholder="여행지나 숙소명 검색"
+                placeholder="파리, 도쿄, 서울 등 지원 도시만 검색 가능합니다"
                 value={searchLocation}
-                onChange={handleLocationInputChange}
+                onChange={handleInputChange}
                 className={styles.searchInput}
                 autoFocus
               />
@@ -58,7 +104,7 @@ const SearchModal = ({
                   className={styles.clearButton}
                   onClick={(e) => {
                     e.stopPropagation();
-                    handleLocationInputChange({ target: { value: "" } });
+                    handleInputChange({ target: { value: "" } });
                   }}
                 >
                   ✕
@@ -69,8 +115,18 @@ const SearchModal = ({
         </div>
 
         <div className={styles.searchContent}>
-          {/* 검색 결과 표시 */}
-          {showLocationOptions && filteredOptions.length > 0 && (
+          {/* 지원하지 않는 도시 검색 시 안내 메시지 */}
+          {notSupportedMessage && (
+            <div className={styles.notSupportedMessage}>
+              현재 파리, 도쿄, 서울, 방콕, 호놀룰루, 세부, 오사카, 호치민 등 8개
+              도시만 지원합니다.
+            </div>
+          )}
+
+          {/* 검색 결과 표시 - 도시코드 추가 */}
+          {showLocationOptions &&
+            filteredOptions.length > 0 &&
+            !notSupportedMessage && (
             <div className={styles.contentCenter}>
               <div className={styles.searchResults}>
                 <div className={styles.resultsList}>
@@ -84,7 +140,11 @@ const SearchModal = ({
                         {getCountryFlag(option)}
                       </div>
                       <div className={styles.locationInfo}>
-                        <div className={styles.locationName}>{option}</div>
+                          <div className={styles.locationName}>
+                            {option}{" "}
+                            {cityToCodeMap[option] &&
+                              `(${cityToCodeMap[option]})`}
+                          </div>
                         <div className={styles.locationDescription}>
                           {getLocationDescription(option)}
                         </div>
@@ -102,9 +162,13 @@ const SearchModal = ({
               <div className={styles.tripNetRecommend}>
                 <h4 className={styles.sectionTitle}>TripNet 추천 지역</h4>
                 <div className={styles.recommendedCards}>
-                  {popularDestinations.map((destination, index) => (
-                    <a
-                      href={destination.link}
+                  {popularDestinations.map((destination, index) => {
+                    // link: "/hotel/PAR/RTPARMAI" 형식에서 cityCode 추출
+                    const match = destination.link.match(/\/hotel\/(\w+)\//);
+                    const cityCode = match ? match[1] : "";
+                    return (
+                      <Link
+                        to={`/foreign/search?cityCode=${cityCode}`}
                       key={index}
                       className={styles.recommendedCard}
                     >
@@ -122,8 +186,9 @@ const SearchModal = ({
                           {destination.subtitle}
                         </div>
                       </div>
-                    </a>
-                  ))}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -131,15 +196,20 @@ const SearchModal = ({
               <div className={styles.popularRegionsSection}>
                 <h4 className={styles.sectionTitle}>인기 지역</h4>
                 <div className={styles.regionTags}>
-                  {popularRegions.map((region, index) => (
-                    <a
-                      href={region.link}
+                  {popularRegions.map((region, index) => {
+                    // region.link: "/search?region=PAR"에서 cityCode 추출
+                    const match = region.link.match(/region=(\w+)/);
+                    const cityCode = match ? match[1] : "";
+                    return (
+                      <Link
+                        to={`/foreign/search?cityCode=${cityCode}`}
                       key={index}
                       className={styles.regionTag}
                     >
                       {region.name}
-                    </a>
-                  ))}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             </div>

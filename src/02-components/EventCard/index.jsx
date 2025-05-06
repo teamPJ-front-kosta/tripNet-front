@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 
 const EventCard = ({ title, subtitle, imageUrl, alt, linkUrl }) => {
@@ -38,7 +39,7 @@ const EventCard = ({ title, subtitle, imageUrl, alt, linkUrl }) => {
 
   return (
     <div className={styles.eventCard}>
-      <a href={linkUrl} className={styles.eventLink}>
+      <Link to={linkUrl} className={styles.eventLink}>
         <div className={styles.eventImageContainer}>
           <img
             src={imageError ? getBackupImageUrl() : imageUrl}
@@ -51,7 +52,7 @@ const EventCard = ({ title, subtitle, imageUrl, alt, linkUrl }) => {
           <h3 className={styles.eventTitle}>{title}</h3>
           <p className={styles.eventSubtitle}>{subtitle}</p>
         </div>
-      </a>
+      </Link>
     </div>
   );
 };

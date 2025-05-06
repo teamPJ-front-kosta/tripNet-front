@@ -2,9 +2,9 @@ import React from "react";
 import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
 
-const Footer = () => {
+const Footer = React.forwardRef(function Footer(props, ref) {
   return (
-    <footer className={styles.footer}>
+    <footer ref={ref} className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.footerContent}>
           <div className={styles.footerSection}>
@@ -122,6 +122,8 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = "Footer";
 
 export default Footer;
