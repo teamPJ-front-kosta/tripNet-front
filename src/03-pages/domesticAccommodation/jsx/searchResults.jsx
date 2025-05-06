@@ -5,6 +5,7 @@ import styles from '../css/searchResults.module.css';
 import SearchModal from '../../../02-components/SearchModal';
 import DateSelectorModal from '../../../02-components/DateSelectorModal';
 import GuestSelector from '../../../02-components/GuestSelector';
+import axios from 'axios';
 
 const SearchResults = () => {
   const navigate = useNavigate();
@@ -43,33 +44,9 @@ const SearchResults = () => {
   const [childAges, setChildAges] = useState([]);
 
   // 검색 결과 상태
-  const [accommodations, setAccommodations] = useState([
-    {
-      id: 1,
-      name: '123 Hall',
-      type: '게스트하우스 · 우지에 · 대만',
-      rating: 5.0,
-      reviewCount: 9,
-      price: 100455,
-      taxIncluded: 116025,
-      imageUrl: '/images/accommodation1.jpg',
-      bookmarked: false
-    },
-    {
-      id: 2,
-      name: '밀린 이란',
-      type: '조식제공 호스텔 · 우지에 · 대만',
-      rating: 4.5,
-      reviewCount: 39,
-      price: 73732,
-      taxIncluded: 85620,
-      imageUrl: '/images/accommodation2.jpg',
-      bookmarked: false,
-      hasPromotion: true,
-      originalPrice: 137622
-    },
-    // Add more mock data as needed
-  ]);
+  const [accommodations, setAccommodations] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   // 필터 상태
   const [filters, setFilters] = useState({
@@ -99,6 +76,70 @@ const SearchResults = () => {
     setGuestSummary(summary);
   };
 
+  const getCityCode = (location) => {
+    switch (location) {
+      case '서울':
+        return 'SEL';
+      case '부산':
+        return 'PUS';
+      case '제주':
+        return 'CJU';
+      default:
+        return location;
+    }
+  };
+
+  // API 호출 함수
+  const fetchAccommodations = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      if (!startDate || !endDate) {
+        return;
+      }
+
+      const formattedCheckIn = format(startDate, 'yyyy-MM-dd');
+      const formattedCheckOut = format(endDate, 'yyyy-MM-dd');
+      const cityCode = getCityCode(searchLocation);
+      
+      const response = await axios.get(
+        `http://localhost:3001/api/domestic-accommodations/search-hotels/${cityCode}/${formattedCheckIn}/${formattedCheckOut}/${adultCount}/${childCount}`
+      );
+
+      const hotelData = response.data.data || [];
+      console.log(hotelData);
+      
+      const formattedAccommodations = hotelData.map((hotel, index) => ({
+        id: hotel.hotel.hotelId,
+        name: hotel.hotel.name,
+        type: `${hotel.hotel.rating || '게스트하우스'} · ${searchLocation}`,
+        rating: hotel.hotel.rating || 0,
+        reviewCount: Math.floor(Math.random() * 100),
+        price: hotel.offers[0]?.price?.total || 0,
+        taxIncluded: Math.floor(hotel.offers[0]?.price?.total * 1.1) || 0,
+        imageUrl: `/images/accommodation${(index % 3) + 1}.jpg`,
+        bookmarked: false,
+        hasPromotion: Math.random() > 0.7,
+        originalPrice: Math.floor(hotel.offers[0]?.price?.total * 1.3) || 0
+      }));
+
+      setAccommodations(formattedAccommodations);
+    } catch (err) {
+      setError('숙소 검색 중 오류가 발생했습니다.');
+      console.error('Error fetching accommodations:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // 검색 파라미터가 변경될 때마다 검색 실행
+  useEffect(() => {
+    if (startDate && endDate) {
+      fetchAccommodations();
+    }
+  }, [searchLocation, startDate, endDate, adultCount, childCount]);
+
   // 검색 실행 함수
   const handleSearch = () => {
     const params = new URLSearchParams();
@@ -114,11 +155,16 @@ const SearchResults = () => {
     navigate(`/domestic/search/results?${params.toString()}`);
   };
 
-  // 북마크 토글 함수
-  const toggleBookmark = (id) => {
-    setAccommodations(accommodations.map(acc => 
-      acc.id === id ? { ...acc, bookmarked: !acc.bookmarked } : acc
-    ));
+  // 상세 페이지로 이동하는 함수
+  const goToDetailPage = (hotelId) => {
+    const params = new URLSearchParams();
+    params.append("location", searchLocation);
+    params.append("checkIn", format(startDate, "yyyy-MM-dd"));
+    params.append("checkOut", format(endDate, "yyyy-MM-dd"));
+    params.append("adults", adultCount);
+    params.append("children", childCount);
+    
+    navigate(`/domestic/hotel-details/${hotelId}?${params.toString()}`);
   };
 
   // 가격 포맷 함수
@@ -182,41 +228,43 @@ const SearchResults = () => {
       </div>
 
       <div className={styles.container}>
-        <div className={styles.accommodationList}>
-          {accommodations.map((accommodation) => (
-            <div key={accommodation.id} className={styles.accommodationCard}>
-              <div className={styles.imageContainer}>
-                <img src={accommodation.imageUrl} alt={accommodation.name} />
-                <button 
-                  className={`${styles.bookmarkButton} ${accommodation.bookmarked ? styles.bookmarked : ''}`}
-                  onClick={() => toggleBookmark(accommodation.id)}
-                >
-                  {accommodation.bookmarked ? '★' : '☆'}
-                </button>
-              </div>
-              <div className={styles.accommodationInfo}>
-                <div className={styles.nameRating}>
-                  <h3>{accommodation.name}</h3>
-                  <div className={styles.rating}>
-                    ★ {accommodation.rating} ({accommodation.reviewCount})
+        {loading && <div className={styles.loading}>검색 중...</div>}
+        {error && <div className={styles.error}>{error}</div>}
+        {!loading && !error && (
+          <div className={styles.accommodationList}>
+            {accommodations.length === 0 ? (
+              <div className={styles.noResults}>검색 결과가 없습니다.</div>
+            ) : (
+              accommodations.map((accommodation) => (
+                <div key={accommodation.id} className={styles.accommodationCard} onClick={() => goToDetailPage(accommodation.id)}>
+                  <div className={styles.imageContainer}>
+                    <img src={accommodation.imageUrl} alt={accommodation.name} />
+                  </div>
+                  <div className={styles.accommodationInfo}>
+                    <div className={styles.nameRating}>
+                      <h3>{accommodation.name}</h3>
+                      <div className={styles.rating}>
+                        ★ {accommodation.rating} ({accommodation.reviewCount})
+                      </div>
+                    </div>
+                    <p className={styles.type}>{accommodation.type}</p>
+                    <div className={styles.priceInfo}>
+                      {accommodation.hasPromotion && (
+                        <span className={styles.originalPrice}>
+                          {formatPrice(accommodation.originalPrice)}원
+                        </span>
+                      )}
+                      <span className={styles.price}>{formatPrice(accommodation.price)}원/박</span>
+                      <span className={styles.taxIncluded}>
+                        세금포함 {formatPrice(accommodation.taxIncluded)}원/박
+                      </span>
+                    </div>
                   </div>
                 </div>
-                <p className={styles.type}>{accommodation.type}</p>
-                <div className={styles.priceInfo}>
-                  {accommodation.hasPromotion && (
-                    <span className={styles.originalPrice}>
-                      {formatPrice(accommodation.originalPrice)}원
-                    </span>
-                  )}
-                  <span className={styles.price}>{formatPrice(accommodation.price)}원/박</span>
-                  <span className={styles.taxIncluded}>
-                    세금포함 {formatPrice(accommodation.taxIncluded)}원/박
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+              ))
+            )}
+          </div>
+        )}
       </div>
 
       {/* 모달 컴포넌트들 */}

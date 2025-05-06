@@ -8,6 +8,7 @@ import KoreanGuestHouse from "./03-pages/KoreanGuestHouse";
 import HotelDetail from "./03-pages/HotelDetail";
 import DomesticAccommodations from "./03-pages/domesticAccommodation";
 import SearchResults from "./03-pages/domesticAccommodation/jsx/searchResults";
+import HotelDetails from "./03-pages/domesticAccommodation/jsx/hotelDetails";
 
 function App() {
   return (
@@ -30,6 +31,10 @@ function App() {
             <Route
               path="/domestic/search/results"
               element={<SearchResults />}
+            />
+            <Route
+              path="/domestic/hotel-details/:hotelId"
+              element={<HotelDetails />}
             />
           </Routes>
         </main>
