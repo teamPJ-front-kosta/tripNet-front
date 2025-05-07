@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 // axios 기본 설정 (파일 최상단에 한 번만 설정)
-axios.defaults.baseURL = process.env.REACT_APP_BACKEND_URL; // 포트 번호를 3003으로 수정
+axios.defaults.baseURL = process.env.REACT_APP_BACKEND_URL;
 axios.defaults.withCredentials = true;             // credentials 설정
 
 // 임시 더미 데이터
