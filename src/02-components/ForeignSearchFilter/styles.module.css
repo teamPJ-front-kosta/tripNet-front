@@ -1,0 +1,136 @@
+.container {
+  background: white;
+  padding: 0 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.section {
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.sectionTitle {
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+  margin: 0 0 16px 0;
+}
+
+/* 가격 범위 스타일 */
+.priceInputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.priceInput {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.priceInput::placeholder {
+  color: #999;
+}
+
+.priceInput:focus {
+  outline: none;
+  border-color: #2b96ed;
+}
+
+.priceSeparator {
+  color: #999;
+  font-size: 14px;
+}
+
+/* 평점 옵션 스타일 */
+.ratingOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ratingOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.ratingOption input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #2b96ed;
+}
+
+.ratingOption span {
+  font-size: 14px;
+  color: #666;
+}
+
+/* 시설 옵션 스타일 */
+.facilities {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.facility {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.facility input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #2b96ed;
+}
+
+.facility span {
+  font-size: 14px;
+  color: #666;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .title {
+    padding: 16px 0;
+  }
+
+  .section {
+    padding: 16px 0;
+  }
+
+  .facilities {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+}

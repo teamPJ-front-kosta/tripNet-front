@@ -1,0 +1,234 @@
+.optionDetailContainer {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 0 0 0 0;
+  position: relative;
+  margin-top: 20px;
+}
+.optionFilterBox {
+  background: #f8f9fa;
+  border-radius: 12px 12px 0 0;
+  padding: 18px 24px 10px 24px;
+  font-size: 16px;
+
+  color: #333;
+}
+.optionFilterRow {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.filterItem {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 16px;
+  color: #444;
+}
+.filterIcon {
+  font-size: 20px;
+  color: #888;
+}
+.roomSummaryBox {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 24px 8px 24px;
+  margin-bottom: 16px;
+}
+.roomThumb {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: #eee;
+}
+.roomSummaryInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.roomName {
+  font-size: 18px;
+  text-align: left;
+  font-weight: 700;
+  color: #222;
+}
+.roomDatePeople {
+  font-size: 15px;
+  text-align: left;
+  color: #888;
+}
+.optionList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 8px;
+  padding-left: 18px;
+  padding-right: 18px;
+  text-align: left;
+}
+.optionListTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.optionRequired {
+  color: #1976d2;
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: 6px;
+}
+.optionItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f3f3f3;
+  cursor: pointer;
+  text-align: left;
+}
+.optionItem:last-child {
+  border-bottom: none;
+}
+.optionItem input[type="radio"] {
+  margin-top: 6px;
+  accent-color: #1976d2;
+  width: 20px;
+  height: 20px;
+}
+.optionInfoBox {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  text-align: left;
+}
+.optionRefundRow {
+  margin-bottom: 2px;
+  text-align: left;
+}
+.refundBadgeNo {
+  color: #d14343;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.refundBadgeYes {
+  color: #1a7f37;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.refundDeadline {
+  color: #888;
+  font-size: 13px;
+  margin-left: 4px;
+}
+.optionName {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 2px;
+  text-align: left;
+}
+.optionPriceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 2px;
+  text-align: left;
+}
+.optionOriginalPrice {
+  color: #d14343;
+  font-size: 15px;
+  text-decoration: line-through;
+  font-weight: 400;
+}
+.optionPrice {
+  color: #d14343;
+  font-size: 20px;
+  font-weight: 700;
+}
+.optionMargin {
+  color: #00b894;
+  font-size: 15px;
+  font-weight: 600;
+  margin-left: 6px;
+}
+.optionTax {
+  font-size: 13px;
+  color: #888;
+  margin-top: 0;
+  text-align: left;
+}
+.stickyFooter {
+  /* position: fixed; */
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  /* bottom: 0; */
+  width: 100%;
+  max-width: 700px;
+  background: #fff;
+  min-height: 72px;
+  padding: 16px 24px;
+  box-shadow: 0px -0.5px 0px rgba(0, 0, 0, 0.02),
+    0px -1px 2px rgba(0, 0, 0, 0.03), 0px -2px 4px rgba(0, 0, 0, 0.03),
+    0px 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  margin-top: 24px;
+  border-radius: 0 0 18px 18px;
+  /* z-index: 1000; */
+}
+.stickyPrice {
+  font-size: 22px;
+  font-weight: 700;
+  color: #222;
+}
+.stickyMargin {
+  color: #00b894;
+  font-size: 15px;
+  font-weight: 600;
+  margin-left: 6px;
+}
+.stickyReserveBtn {
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 13px 38px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.stickyReserveBtn:hover {
+  background: #111;
+}
+@media (max-width: 768px) {
+  .optionDetailContainer {
+    max-width: 100%;
+    border-radius: 0;
+    padding: 0 0 100px 0;
+  }
+  .optionFilterBox,
+  .roomSummaryBox,
+  .optionList {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .stickyFooter {
+    max-width: 100%;
+    padding: 12px 10px;
+  }
+}
