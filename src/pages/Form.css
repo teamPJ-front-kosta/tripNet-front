@@ -82,3 +82,13 @@
   cursor: pointer;
 }
 
+.login-input,
+.login-input select {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}

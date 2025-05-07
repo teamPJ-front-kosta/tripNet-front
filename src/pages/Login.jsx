@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
+import bcrypt from "bcryptjs";
+import "./Form.css";
 
 function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -10,64 +11,63 @@ function Login() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // ✅ 엔터 키 눌렀을 때 로그인 실행
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleLogin();
+    }
+  };
+
   const handleLogin = async () => {
     if (!form.email || !form.password) {
       alert("이메일과 비밀번호를 모두 입력하세요.");
       return;
     }
-  
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(form.email)) {
-      alert("이메일 형식이 올바르지 않습니다.");
-      return;
-    }
-  
-    const res = await fetch("http://localhost:3002/users");
-    const users = await res.json();
-  
-    const matchedUser = users.find(
-      (user) => user.email === form.email && user.password === form.password
-    );
-  
-    if (matchedUser) {
-      alert("✅ 로그인 성공!");
-      localStorage.setItem("isLoggedIn", "true");
-      localStorage.setItem("user", JSON.stringify(matchedUser));
-  
-      // ✅ 로그인 성공 이벤트 발생
-      window.dispatchEvent(new Event("login-success"));
-  
-      navigate("/");
-    } else {
-      alert("❌ 이메일 또는 비밀번호가 일치하지 않습니다.");
+
+    try {
+      const res = await fetch(`http://localhost:3002/users?email=${form.email}`);
+      const users = await res.json();
+
+      const user = users[0];
+
+      if (user && bcrypt.compareSync(form.password, user.password)) {
+        alert("✅ 로그인 성공!");
+
+        
+        const audio = new Audio("/audio/sukuna.mp3");  
+        audio.play();
+
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("user", JSON.stringify(user));
+        window.dispatchEvent(new Event("login-success"));
+        navigate("/");
+      } else {
+        alert("❌ 이메일 또는 비밀번호가 일치하지 않습니다.");
+      }
+    } catch (err) {
+      console.error("로그인 오류:", err);
+      alert("서버 오류가 발생했습니다.");
     }
   };
-  
 
   return (
     <section className="login-container">
       <h2 className="login-title">로그인</h2>
       <p className="login-desc">
         ID, 비번 없이 1초 😊 무료가입으로 간편하게 로그인하세요.
-        <br />
-        마이리얼트립 회원은 다양한 혜택을 누릴 수 있습니다.
       </p>
 
-      <a href="http://localhost:3001/auth/kakao" className="btn-kakao">
+      <a href="#" className="btn-kakao" onClick={(e) => {
+        e.preventDefault();
+        alert("카카오 로그인은 준비 중입니다.");
+      }}>
         카카오 1초 로그인 · 무료가입
       </a>
 
-      <a
-        href="http://localhost:3001/auth/naver"
-        className="btn-naver"
-        onClick={() => {
-          // 네이버 세션 쿠키 강제 삭제 후 재인증 유도
-          window.location.href = "https://nid.naver.com/nidlogin.logout";
-          setTimeout(() => {
-            window.location.href = "http://localhost:3001/auth/naver";
-          }, 500);
-        }}
-      >
+      <a href="#" className="btn-naver" onClick={(e) => {
+        e.preventDefault();
+        alert("네이버 로그인은 준비 중입니다.");
+      }}>
         네이버 1초 로그인 · 무료가입
       </a>
 
@@ -78,6 +78,7 @@ function Login() {
         placeholder="아이디"
         className="login-input"
         onChange={handleChange}
+        onKeyDown={handleKeyDown} // ✅ 추가
       />
       <input
         name="password"
@@ -85,21 +86,18 @@ function Login() {
         placeholder="비밀번호"
         className="login-input"
         onChange={handleChange}
+        onKeyDown={handleKeyDown} // ✅ 추가
       />
 
-      <button className="btn-login" onClick={handleLogin}>
-        로그인
-      </button>
+      <button className="btn-login" onClick={handleLogin}>로그인</button>
 
       <div className="login-links">
         <span onClick={() => navigate("/find-id")} style={{ cursor: "pointer" }}>
           아이디 찾기
-        </span>{" "}
-        |{" "}
+        </span> |{" "}
         <span onClick={() => navigate("/find-password")} style={{ cursor: "pointer" }}>
           비밀번호 찾기
-        </span>{" "}
-        |{" "}
+        </span> |{" "}
         <span onClick={() => navigate("/signup")} style={{ cursor: "pointer" }}>
           회원가입
         </span>

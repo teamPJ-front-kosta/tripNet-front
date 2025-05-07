@@ -1,4 +1,5 @@
 // src/components/MainBanner.jsx
+import "./MainBanner.css";
 
 function MainBanner() {
   return (

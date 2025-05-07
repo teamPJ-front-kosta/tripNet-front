@@ -1,0 +1,162 @@
+[
+  {
+    "id": "1",
+    "name": "서울 신라호텔",
+    "imageUrl": "https://content.r9cdn.net/rimg/himg/d4/f9/fe/revato-6948-13268234-124518.jpg",
+    "description": "한국 대표 럭셔리 호텔, 시끄러운 도심 속 휴식처",
+    "price": 400000,
+    "currency": "KRW"
+  },
+  {
+    "id": "2",
+    "name": "롯데호텔 서울",
+    "imageUrl": "https://content.r9cdn.net/rimg/himg/d9/ce/26/revato-2628-13074010-411670.jpg",
+    "description": "명동 중심에 위치한 품격있는 5성급 호텔",
+    "price": 460000,
+    "currency": "KRW"
+  },
+  {
+    "id": "3",
+    "name": "시그니엘 서울",
+    "imageUrl": "https://content.r9cdn.net/rimg/himg/c3/cf/d3/revato-2781987-38496999-100858.jpg",
+    "description": "롯데월드타워 상층부에 위치한 서울 최고급 럭셔리 호텔",
+    "price": 700000,
+    "currency": "KRW"
+  },
+  {
+    "id": "4",
+    "name": "롯데호텔 부산",
+    "imageUrl": "https://content.r9cdn.net/rimg/himg/62/41/23/revato-2711-5676840-914167.jpg",
+    "description": "해운대와 가까운 오션뷰 특급호텔",
+    "price": 210000,
+    "currency": "KRW"
+  },
+  {
+    "id": "5",
+    "name": "웨스틴 조선 서울",
+    "imageUrl": "https://content.r9cdn.net/rimg/himg/4e/91/2c/revato-2337-13317822-790232.jpg",
+    "description": "한국 최초의 호텔, 전통과 품격을 지닌 5성급 숙소",
+    "price": 410000,
+    "currency": "KRW"
+  },
+  {
+    "id": "6",
+    "name": "포시즌스 호텔 서울",
+    "imageUrl": "https://content.r9cdn.net/rimg/himg/c3/07/02/leonardo-2009719-temp_1543458663192.103230068_O-794908.jpg",
+    "description": "광화문에 위치한 세련된 글로벌 럭셔리 호텔",
+    "price": 210000,
+    "currency": "KRW"
+  },
+  {
+    "id": "7",
+    "name": "그랜드 인터컨티넨탈 서울 파르나스",
+    "imageUrl": "https://content.r9cdn.net/rimg/himg/71/97/6a/leonardo-82365-152667101-310535.jpg",
+    "description": "삼성역 파르나스몰과 연결된 최상급 비즈니스 호텔",
+    "price": 720000,
+    "currency": "KRW"
+  },
+  {
+    "id": "8",
+    "name": "콘래드 서울 호텔",
+    "imageUrl": "https://content.r9cdn.net/rimg/himg/2f/a8/90/ice-680815-121549036-571562.jpg",
+    "description": "여의도 한강뷰가 매력적인 모던 럭셔리 호텔",
+    "price": 52800,
+    "currency": "KRW"
+  },
+  {
+    "id": "9",
+    "name": "반얀트리 클럽 앤 스파 서울",
+    "imageUrl": "https://content.r9cdn.net/rimg/himg/42/10/79/revato-14062-11315380-232251.jpg",
+    "description": "프라이빗 스파와 고요한 휴식을 선사하는 럭셔리 리조트",
+    "price": 680000,
+    "currency": "KRW"
+  },
+  {
+    "id": "10",
+    "name": "그랜드 하얏트 서울",
+    "imageUrl": "https://content.r9cdn.net/rimg/himg/b2/5a/cd/ice-87537274-66931532_3XL-769622.jpg",
+    "description": "용산 언덕 위에서 즐기는 서울의 감성 뷰 스테이",
+    "price": 420000,
+    "currency": "KRW"
+  },
+  {
+    "id": "11",
+    "name": "파크 하얏트 서울",
+    "imageUrl": "https://content.r9cdn.net/rimg/himg/d1/3f/c6/ice-120697-107621170-430468.jpg",
+    "description": "전면 유리창으로 즐기는 서울 도심 파노라마 뷰",
+    "price": 590000,
+    "currency": "KRW"
+  },
+  {
+    "id": "12",
+    "name": "워커힐 더글라스 하우스",
+    "imageUrl": "https://content.r9cdn.net/rimg/himg/77/a3/fa/revato-2820645-13256194-326261.jpg",
+    "description": "한강과 숲을 함께 누리는 조용한 어른 전용 호텔",
+    "price": 520000,
+    "currency": "KRW"
+  },
+  {
+    "id": "13",
+    "name": "그랜드 워커힐 서울",
+    "imageUrl": "https://content.r9cdn.net/rimg/himg/6b/d2/c9/expedia_group-167239-250075425-824674.jpg",
+    "description": "전통과 현대가 조화로운 프리미엄 라이프스타일 호텔",
+    "price": 430000,
+    "currency": "KRW"
+  },
+  {
+    "id": "14",
+    "name": "JW 메리어트 호텔 서울",
+    "imageUrl": "https://content.r9cdn.net/rimg/himg/ff/94/ca/leonardo-98785-164399375-115439.jpg",
+    "description": "럭셔리와 여유가 어우러진 센트럴시티 프리미엄 스테이",
+    "price": 540000,
+    "currency": "KRW"
+  },
+  {
+    "id": "15",
+    "name": "조선 팰리스 서울 강남",
+    "imageUrl": "https://content.r9cdn.net/rimg/kimg/09/69/991798f465897af9.jpg",
+    "description": "고급스러운 감성과 최첨단 시설이 어우러진 강남 럭셔리 호텔",
+    "price": 740000,
+    "currency": "KRW"
+  },
+  {
+    "id": "16",
+    "name": "오크우드 프리미어 코엑스센터",
+    "imageUrl": "https://content.r9cdn.net/rimg/himg/4c/fe/48/expedia_group-100206-215243269-312953.jpg",
+    "description": "넓은 객실과 주방을 갖춘 강남의 프리미엄 레지던스",
+    "price": 910000,
+    "currency": "KRW"
+  },
+  {
+    "id": "17",
+    "name": "스위스 그랜드 호텔",
+    "imageUrl": "https://content.r9cdn.net/rimg/kimg/44/fa/bcebff6558b2a078.jpg",
+    "description": "연회와 가족 여행 모두에 적합한 클래식 특급 호텔",
+    "price": 340000,
+    "currency": "KRW"
+  },
+  {
+    "id": "18",
+    "name": "레스케이프 호텔",
+    "imageUrl": "https://content.r9cdn.net/rimg/himg/20/e3/5a/revato-2359794-12237383-386861.jpg",
+    "description": "파리지앵 감성을 담은 명동의 부티크 호텔",
+    "price": 360000,
+    "currency": "KRW"
+  },
+  {
+    "id": "19",
+    "name": "롯데 호텔 월드",
+    "imageUrl": "https://content.r9cdn.net/rimg/himg/1b/c1/9b/leonardo-2017719-________1_O-302428.jpg",
+    "description": "롯데월드와 연결된 가족 친화형 특급 호텔",
+    "price": 450000,
+    "currency": "KRW"
+  },
+  {
+    "id": "20",
+    "name": "메리어트 이그제큐티브 아파트먼트 서울",
+    "imageUrl": "https://content.r9cdn.net/rimg/himg/d6/0b/2d/leonardo-176585-184615137-171013.jpg",
+    "description": "장기 투숙객을 위한 고급 풀옵션 레지던스 호텔",
+    "price": 430000,
+    "currency": "KRW"
+  }
+]
