@@ -1,108 +1,162 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import TicketDescription from '../../02-components/ticket/TicketDescription';
-import TicketBadgeGroup from '../../02-components/ticket/TicketBadgeGroup';
-import TicketOptionList from '../../02-components/ticket/TicketOptionList';
-import SelectedSummary from '../../02-components/ticket/SelectedSummary';
-import { getTicketDetail } from '../../05-utils/api/ticketAPI';
 import './ticketDetail.css';
+import TicketTopSummary from './ticketTopSummary';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+
+// fallback mock 데이터
+const fallbackTicket = {
+  id: 'dummy',
+  location: { name: '대한민국 > 경상도' },
+  name: '[★당일가능] 롯데워터파크 미들시즌 종일권(~5/23)',
+  rating: 5.0,
+  reviewCount: 1,
+  badges: ['최저가 보장제', '즉시확정', '최대 12개월 무이자 할부 가능'],
+  price: { amount: 22000, currencyCode: '원' },
+  validDate: '2025.05.23',
+  options: [
+    { name: '대인 종일권', desc: '만 13세 이상', original: 46000, price: 27000 },
+    { name: '소인 종일권', desc: '36개월 이상~만 12세', original: 37000, price: 22000 },
+  ],
+  notice: [
+    '국내 최대 규모의 실내 파도풀과 아일랜드 스파!',
+    '미사용 티켓은 100% 환불 가능해요.',
+    '카드사 및 카카오페이 최대 1.7만원 결제 할인 혜택 받기!',
+  ],
+  description: [
+    '10만명 이상이 구매한 인기 상품입니다.',
+    '무료취소 가능하며, 유효기간 내 자유롭게 사용하세요.',
+  ],
+  refund: [
+    '유효기간 내 미사용티켓 100% 환불가능',
+    '유효기간 후 미사용티켓 100% 환불불가',
+    '사용한 티켓은 환불 불가능합니다.',
+  ],
+  info: {
+    location: '대한민국 경상남도 김해시 장유로 555',
+    useTime: '10:00~18:00',
+    useMethod: ['상단 URL 클릭', 'QR코드 확인', '모바일티켓으로 입장'],
+    extra: ['현장 상황 따라 변동 가능', '36개월 미만은 무료입장'],
+    age: ['대인 : 만 13세 이상', '소인 : 36개월 이상 ~ 만 12세 이하'],
+  },
+  reviews: [
+    {
+      user: '힘**',
+      date: '2025-05-05',
+      score: 5,
+      content: '야외는 안 열렸지만 저렴하게 잘 놀았어요.',
+      photo: 'https://via.placeholder.com/120x80?text=Review',
+    },
+  ],
+  related: [
+    { title: '스파 더 스페이스', price: 9000, img: 'https://via.placeholder.com/180x120?text=Related' },
+    { title: '블루원아쿠아폴리스', price: 18900, img: 'https://via.placeholder.com/180x120?text=Related' },
+  ],
+};
 
 function TicketDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [counts, setCounts] = useState([]);
   const [ticket, setTicket] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [counts, setCounts] = useState([]);
 
   useEffect(() => {
-    setLoading(true);
-    setError(null);
-    getTicketDetail(id)
-      .then(data => {
-        setTicket(data);
-        setCounts(Array(data.options.length).fill(0));
-        setLoading(false);
+    axios.get(`/api/tickets/${id}`)
+      .then(res => {
+        setTicket(res.data);
+        setCounts(Array(res.data.options?.length || 0).fill(0));
       })
       .catch(err => {
-        setError('티켓 정보를 불러오지 못했습니다.');
-        setLoading(false);
+        console.error("티켓 로딩 실패:", err.message);
+        setTicket(fallbackTicket);
+        setCounts(Array(fallbackTicket.options.length).fill(0));
       });
   }, [id]);
 
-  const handleCountChange = (idx, value) => {
-    setCounts(prev => prev.map((c, i) => (i === idx ? Math.max(value, 0) : c)));
+  const handleScrollToReserve = () => {
+    const el = document.getElementById('reserve');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleCount = (idx, newCount) => {
+    setCounts(prev => prev.map((c, i) => (i === idx ? Math.max(0, newCount) : c)));
   };
 
   const handlePay = () => {
-    const selected = ticket.options
-      .map((opt, i) => ({ ...opt, count: counts[i] || 0 }))
-      .filter(opt => opt.count > 0);
-    navigate('/order-page', { state: { ticketId: id, selectedOptions: selected } });
+    navigate("/order-page");
   };
 
-  if (loading) return <div className="ticket-detail">로딩중...</div>;
-  if (error) return <div className="ticket-detail error">{error}</div>;
-  if (!ticket) return null;
+  if (!ticket) return <div>로딩 중...</div>;
 
   return (
-    <div className="ticket-detail">
-      <div className="td-header">
-        <div className="td-title-wrap">
-          <h1 className="td-title">{ticket.title}</h1>
-          <div className="td-rating">
-            <span className="td-stars">★ {ticket.rating}</span>
-            <span className="td-review">({ticket.reviewCount})</span>
+    <div className="td-layout">
+      <div className="td-main">
+        <TicketTopSummary amadeusTickets={[ticket]} />
+        <main className="td-main">
+          <div className="td-benefit-row">
+            <div className="td-benefit-list">
+              {ticket.badges?.map((b, i) => (
+                <div key={i} className="td-benefit-item"><b>{b}</b></div>
+              ))}
+            </div>
+            <div className="td-benefit-icons">
+              <span>e-ticket</span>
+              <span>유효기간(~{ticket.validDate}) 내 사용</span>
+            </div>
           </div>
-        </div>
-        <div className="td-price-box">
-          <span className="td-original">{ticket.originalPrice.toLocaleString()}원</span>
-          <span className="td-discount">{ticket.discount}%</span>
-          <span className="td-price">{ticket.price.toLocaleString()}원</span>
-          <button className="td-book-btn">예약하기</button>
-        </div>
-      </div>
-      <TicketBadgeGroup badges={ticket.badges} />
-      <div className="td-section">
-        <h2>마이리얼트립에서 롯데월드 이용권 구매하면 무엇이 좋은가요?</h2>
-        <TicketDescription description={ticket.description} />
-      </div>
-      <div className="td-section">
-        <h3>유의사항</h3>
-        <ul>
-          {ticket.notice.map((n, i) => <li key={i}>{n}</li>)}
-        </ul>
-      </div>
-      <div className="td-section">
-        <h2>예약하기</h2>
-        <TicketOptionList options={ticket.options} counts={counts} onCountChange={handleCountChange} />
-        <SelectedSummary options={ticket.options} counts={counts} onPay={handlePay} />
-      </div>
-      <div className="td-section">
-        <img
-          className="td-info-img"
-          src="https://d2ur7st6jjikze.cloudfront.net/offer_photos/70816/1100000/offer_70816_1100000_1713499632.jpg"
-          alt="롯데월드 안내"
-        />
-      </div>
-      <div className="td-section">
-        <div className="td-review-summary">
-          <span className="td-review-score">4.8</span>
-          <span className="td-review-stars">★★★★★</span>
-          <span className="td-review-count">후기 {ticket.reviewCount}개</span>
-        </div>
-        <div className="td-review-item">
-          <div className="td-reviewer">김** <span>2025-05-03</span></div>
-          <div className="td-review-content">
-            인기많은건 줄이 너무 길어서 타지는 못했지만<br />
-            밖에서 줄서서 기다리는 놀이기구는 더운날엔 좀 힘들어서<br />
-            선크림 잘 바르고 선글라스 챙겨가면 더 좋을것 같아요
+
+          <div className="td-info-box">
+            <div className="td-info-title">{ticket.notice?.[0]}</div>
+            <div className="td-info-desc">{ticket.notice?.slice(1).join('\n')}</div>
           </div>
-        </div>
-        <button className="td-review-more">후기 전체 보기</button>
+
+          <section className="td-section" id="reserve">
+            <h2>예약하기</h2>
+            <div className="td-options-list">
+              {ticket.options?.map((opt, i) => (
+                <div className={`td-option-card${counts[i] > 0 ? ' selected' : ''}`} key={i}>
+                  <div>
+                    <div className="td-option-title">{opt.name}</div>
+                    <div className="td-option-desc">{opt.desc}</div>
+                  </div>
+                  <div className="td-option-price">
+                    <span className="td-option-original">{opt.original?.toLocaleString()}원</span>
+                    <span className="td-option-final">{opt.price?.toLocaleString()}원</span>
+                  </div>
+                  <div className="td-option-qty">
+                    <button onClick={() => handleCount(i, counts[i] - 1)}>-</button>
+                    <span>{counts[i]}</span>
+                    <button onClick={() => handleCount(i, counts[i] + 1)}>+</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {counts.some(c => c > 0) && (
+              <div className="td-pay-summary">
+                <div className="td-pay-total">
+                  총 여행 금액 <span>{ticket.options.reduce((sum, opt, i) => sum + (opt.price * counts[i]), 0).toLocaleString()}원</span>
+                </div>
+                <button className="td-pay-btn" onClick={handlePay}>결제하기</button>
+              </div>
+            )}
+          </section>
+
+          {/* 이하 상품 소개, 환불 안내, 후기, 연관 상품은 ticket.description 등으로 대체 가능 */}
+          {/* 필요 시 확장 */}
+        </main>
       </div>
+      <aside className="td-side">
+        <div className="td-reserve-box">
+          <div className="td-reserve-title">{ticket.name}</div>
+          <div className="td-reserve-price-row">
+            <span className="td-reserve-price">{ticket.price?.amount?.toLocaleString()}원</span>
+            <span className="td-reserve-price-desc">부터</span>
+          </div>
+          <button className="td-side-reserve-btn" onClick={handleScrollToReserve}>예약하기</button>
+        </div>
+      </aside>
     </div>
   );
 }
 
-export default TicketDetail; 
+export default TicketDetail;

@@ -1,91 +1,114 @@
-.ticket-detail {
-  max-width: 800px;
+.td-layout {
+  display: flex;
+  align-items: flex-start;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 32px 16px 80px 16px;
-  font-family: 'Noto Sans KR', sans-serif;
   background: #fff;
+  font-family: 'Noto Sans KR', sans-serif;
+  overflow: visible;
+  box-sizing: border-box;
 }
-.td-header {
-  border-bottom: 1px solid #eee;
-  padding-bottom: 24px;
-}
-.td-title-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.td-title {
-  font-size: 1.7rem;
-  font-weight: bold;
-}
-.td-rating {
-  color: #2b96ed;
-  font-size: 1.1rem;
-}
-.td-stars {
-  margin-right: 8px;
-}
-.td-price-box {
-  margin-top: 16px;
+
+.td-top-summary {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 18px;
+  padding: 0 0 32px 0;
+  font-size: 1.08rem;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 32px;
+  white-space: nowrap;
+  overflow-x: auto;
 }
-.td-original {
-  text-decoration: line-through;
-  color: #aaa;
-}
-.td-discount {
-  color: #ff3b30;
-  font-weight: bold;
-}
-.td-price {
-  font-size: 1.4rem;
+.td-title-inline {
+  font-size: 1.35rem;
   font-weight: bold;
   color: #222;
+  margin-right: 8px;
 }
-.td-book-btn {
-  margin-left: auto;
-  background: #2b96ed;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 10px 24px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
+.td-rating-inline {
+  color: #2b96ed;
+  font-size: 1.08rem;
 }
-.td-badges {
-  margin: 18px 0;
+.td-badges-inline {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
-.td-badge {
+.td-badge-inline {
   background: #f5f7fa;
   color: #2b96ed;
   border-radius: 16px;
-  padding: 6px 14px;
-  font-size: 0.95rem;
+  padding: 4px 12px;
+  font-size: 0.98rem;
   font-weight: 500;
 }
-.td-section {
-  margin: 32px 0 0 0;
+.td-valid-date {
+  color: #888;
+  font-size: 1rem;
+  margin-left: 8px;
 }
-.td-section h2, .td-section h3 {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
+
+.td-main {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 800px;
+  margin-right: 40px;
+  word-break: keep-all;
+  white-space: normal;
+  box-sizing: border-box;
+}
+
+.td-benefit-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  margin-bottom: 18px;
+}
+.td-benefit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.td-benefit-item {
+  color: #444;
+  font-size: 1rem;
+}
+.td-benefit-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #888;
+  font-size: 0.98rem;
+}
+
+.td-info-box {
+  background: #f5f7fa;
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-bottom: 32px;
+  margin-top: 8px;
+}
+.td-info-title {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+.td-info-desc {
+  color: #444;
+  font-size: 0.98rem;
+}
+
+.td-section {
+  margin: 40px 0 0 0;
+}
+.td-section h2 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 18px;
   color: #222;
 }
-.td-section ul {
-  padding-left: 18px;
-  color: #444;
-}
-.td-section li {
-  margin-bottom: 7px;
-  line-height: 1.6;
-}
-.td-options {
+
+.td-options-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -120,11 +143,6 @@
   color: #aaa;
   font-size: 0.95rem;
 }
-.td-option-discount {
-  color: #ff3b30;
-  font-size: 0.95rem;
-  font-weight: bold;
-}
 .td-option-final {
   font-size: 1.15rem;
   font-weight: bold;
@@ -145,31 +163,43 @@
   font-size: 1.1rem;
   cursor: pointer;
 }
-.td-info-img {
-  width: 100%;
-  border-radius: 12px;
-  margin: 24px 0;
-}
-.td-review-summary {
+
+.td-pay-summary {
+  margin-top: 18px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 1.2rem;
-  margin-bottom: 12px;
+  justify-content: space-between;
 }
-.td-review-score {
-  font-size: 2rem;
+.td-pay-total {
+  font-size: 1.1rem;
   font-weight: bold;
   color: #2b96ed;
 }
-.td-review-stars {
-  color: #ffd700;
-  font-size: 1.3rem;
+.td-pay-btn {
+  width: 180px;
+  height: 48px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background: #2b96ed;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
 }
-.td-review-count {
-  color: #888;
-  font-size: 1rem;
+.td-pay-btn:hover {
+  background: #2176c1;
 }
+
+.td-desc-list {
+  padding-left: 18px;
+  color: #444;
+}
+.td-desc-list li {
+  margin-bottom: 7px;
+  line-height: 1.6;
+}
+
 .td-review-item {
   background: #fafbfc;
   border-radius: 8px;
@@ -184,23 +214,137 @@
 .td-review-content {
   color: #444;
   line-height: 1.6;
+  margin-bottom: 8px;
 }
-.td-review-more {
-  background: #fff;
-  border: 1px solid #2b96ed;
-  color: #2b96ed;
-  border-radius: 6px;
-  padding: 8px 18px;
+.td-review-photo {
+  width: 120px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.td-related-list {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.td-related-card {
+  width: 180px;
+  background: #fafbfc;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.td-related-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+.td-related-title {
   font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 10px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  text-align: center;
 }
-@media (max-width: 600px) {
-  .ticket-detail {
-    padding: 12px 2px 80px 2px;
+.td-related-price {
+  color: #2b96ed;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 2px;
+}
+
+.td-side {
+  width: 340px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+  box-sizing: border-box;
+}
+.td-reserve-box {
+  position: sticky;
+  top: 100px;
+  right: 0;
+  background: #fafbfc;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 28px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 18px;
+  width: 320px;
+  z-index: 30;
+  box-sizing: border-box;
+}
+.td-reserve-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.td-reserve-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.td-reserve-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2b96ed;
+}
+.td-reserve-price-desc {
+  color: #888;
+  font-size: 1rem;
+}
+.td-side-reserve-btn {
+  width: 100%;
+  height: 48px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background: #2b96ed;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  margin-top: 18px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.td-side-reserve-btn:hover {
+  background: #2176c1;
+}
+@media (max-width: 1200px) {
+  .td-layout {
+    max-width: 100vw;
+    padding: 24px 8px 40px 8px;
   }
-  .td-header, .td-section {
-    padding: 0 2px;
+  .td-main {
+    max-width: 100%;
+    margin-right: 24px;
+  }
+  .td-side {
+    width: 320px;
+  }
+  .td-reserve-box {
+    width: 100%;
+    min-width: 260px;
+    max-width: 320px;
+  }
+}
+@media (max-width: 1024px) {
+  .td-layout {
+    flex-direction: column;
+    padding: 16px 2vw 40px 2vw;
+  }
+  .td-main {
+    margin-right: 0;
+    max-width: 100%;
+  }
+  .td-side {
+    display: none;
   }
 }

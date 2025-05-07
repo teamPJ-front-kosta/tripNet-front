@@ -194,7 +194,7 @@ function TicketPage() {
                   }}
                 >
                   {activities.map((activity) => (
-                    <div key={activity.id} className="tour-card" onClick={() => navigate(`/tour-ticket/${activity.id}`)}>
+                    <div key={activity.id} className="tour-card" onClick={() => navigate(`/ticket/${activity.id}`)}>
                       <div className="tour-image">
                         <img 
                           src={activity.pictures?.[0] || 'https://placehold.co/300x200?text=No+Image'}
