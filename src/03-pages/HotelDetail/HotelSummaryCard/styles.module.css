@@ -6,11 +6,11 @@
   align-items: flex-start;
   width: 100%;
   max-width: 900px;
-  margin: 0 auto 10px auto;
-  padding: 16px 20px 12px 20px; 
+  margin: 0 auto 32px auto;
+  padding: 28px 32px 24px 32px;
   background: #fff;
   border-radius: 18px;
-  box-shadow: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   box-sizing: border-box;
 }
 

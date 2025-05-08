@@ -5,16 +5,14 @@
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  padding: 0 0 0 0;
+  padding: 0 0 120px 0;
   position: relative;
-  margin-top: 20px;
 }
 .optionFilterBox {
   background: #f8f9fa;
   border-radius: 12px 12px 0 0;
   padding: 18px 24px 10px 24px;
   font-size: 16px;
-
   color: #333;
 }
 .optionFilterRow {
@@ -38,7 +36,6 @@
   align-items: center;
   gap: 18px;
   padding: 18px 24px 8px 24px;
-  margin-bottom: 16px;
 }
 .roomThumb {
   width: 80px;
@@ -54,28 +51,24 @@
 }
 .roomName {
   font-size: 18px;
-  text-align: left;
   font-weight: 700;
   color: #222;
 }
 .roomDatePeople {
   font-size: 15px;
-  text-align: left;
   color: #888;
 }
 .optionList {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 8px;
-  padding-left: 18px;
-  padding-right: 18px;
-  text-align: left;
+  padding: 0 24px;
+  margin-top: 8px;
+  max-height: 340px;
+  overflow-y: auto;
 }
 .optionListTitle {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 700;
   margin-bottom: 8px;
+  color: #222;
 }
 .optionRequired {
   color: #1976d2;
@@ -86,11 +79,10 @@
 .optionItem {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px solid #f3f3f3;
+  gap: 14px;
+  padding: 18px 0 12px 0;
+  border-bottom: 1px solid #f0f0f0;
   cursor: pointer;
-  text-align: left;
 }
 .optionItem:last-child {
   border-bottom: none;
@@ -102,15 +94,13 @@
   height: 20px;
 }
 .optionInfoBox {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  width: 100%;
-  text-align: left;
+  gap: 5px;
 }
 .optionRefundRow {
   margin-bottom: 2px;
-  text-align: left;
 }
 .refundBadgeNo {
   color: #d14343;
@@ -135,16 +125,13 @@
 }
 .optionName {
   font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 2px;
-  text-align: left;
+  font-weight: 500;
+  color: #222;
 }
 .optionPriceRow {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
-  margin-bottom: 2px;
-  text-align: left;
+  align-items: center;
+  gap: 12px;
 }
 .optionOriginalPrice {
   color: #d14343;
@@ -164,31 +151,27 @@
   margin-left: 6px;
 }
 .optionTax {
-  font-size: 13px;
   color: #888;
-  margin-top: 0;
-  text-align: left;
+  font-size: 14px;
+  margin-top: 2px;
 }
 .stickyFooter {
-  /* position: fixed; */
-  /* left: 50%; */
-  /* transform: translateX(-50%); */
-  /* bottom: 0; */
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
   width: 100%;
   max-width: 700px;
   background: #fff;
   min-height: 72px;
   padding: 16px 24px;
   box-shadow: 0px -0.5px 0px rgba(0, 0, 0, 0.02),
-    0px -1px 2px rgba(0, 0, 0, 0.03), 0px -2px 4px rgba(0, 0, 0, 0.03),
-    0px 2px 8px rgba(0, 0, 0, 0.04);
+    0px -1px 2px rgba(0, 0, 0, 0.03), 0px -2px 4px rgba(0, 0, 0, 0.03);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 1000;
   box-sizing: border-box;
-  margin-top: 24px;
-  border-radius: 0 0 18px 18px;
-  /* z-index: 1000; */
 }
 .stickyPrice {
   font-size: 22px;

@@ -37,7 +37,7 @@ const ForeignSearchResults = () => {
   const [hotels, setHotels] = useState([]);
 
   useEffect(() => {
-    fetch("/api/foreign-accommodations")
+    fetch("/api/domestic-accommodations")
       .then((res) => res.json())
       .then((data) => {
         // cityCode별로 hotels만 평탄화
@@ -130,6 +130,7 @@ const ForeignSearchResults = () => {
             {filteredHotels.length === 0 ? (
               <div className={styles.noResult}>검색 결과가 없습니다.</div>
             ) : (
+              console.log("filteredHotels:", filteredHotels),
               filteredHotels.map((hotel) => (
                 <HotelCard
                   key={hotel.hotelId}
@@ -137,7 +138,6 @@ const ForeignSearchResults = () => {
                   onClick={() =>
                     navigate(`/hotel/${hotel.cityCode}/${hotel.hotelId}`, {
                       state: {
-                        from: 'foreign-accommodation',
                         checkIn: searchCriteria.checkIn,
                         checkOut: searchCriteria.checkOut,
                         adults: searchCriteria.adults,

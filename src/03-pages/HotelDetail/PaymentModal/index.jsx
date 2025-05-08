@@ -23,21 +23,16 @@ const PaymentModal = ({
   nights,
   adults,
   refundable,
-  pricePerNight, // USD 단가
+  pricePerNight,
   cityTax = 67.6,
-  currency = "USD",
 }) => {
   if (!open) return null;
   // 계산
   const roomCount = 1;
-  const pricePerNightNum = Number(pricePerNight);
-  const totalRoomPrice = pricePerNightNum * nights;
+  const totalRoomPrice = pricePerNight * nights;
   const tax = Math.round(totalRoomPrice * 0.11);
   const discount = -tax;
   const finalPrice = totalRoomPrice + tax + discount;
-
-  // 표기용 단위
-  const currencySymbol = currency === "USD" ? "$" : "₩";
 
   return (
     <div className={styles.overlay}>
@@ -64,45 +59,35 @@ const PaymentModal = ({
         <div className={styles.nightsRow}>
           객실 {roomCount}개 x {nights}박
           <span className={styles.nightsPrice}>
-            {currencySymbol}
-            {totalRoomPrice.toFixed(2)}
+            {totalRoomPrice.toLocaleString()}원
           </span>
         </div>
         <div className={styles.priceDetailBox}>
           <div className={styles.priceRow}>
             <span>객실 이용료</span>
-            <span>
-              {currencySymbol}
-              {(totalRoomPrice - tax).toFixed(2)}
-            </span>
+            <span>{(totalRoomPrice - tax).toLocaleString()}원</span>
           </div>
           <div className={styles.priceRow}>
             <span>세금 및 수수료</span>
-            <span>
-              {currencySymbol}
-              {tax.toFixed(2)}
-            </span>
+            <span>{tax.toLocaleString()}원</span>
           </div>
         </div>
         <div className={styles.discountRow}>
           <span className={styles.discountLabel}>총 할인금액</span>
           <span className={styles.discountValue}>
-            {currencySymbol}
-            {discount.toFixed(2)}
+            {discount.toLocaleString()}원
           </span>
         </div>
         <div className={styles.zeroMarginBadgeRow}>
           <span className={styles.zeroMarginBadge}>제로마진</span> 할인
           <span className={styles.discountValue}>
-            {currencySymbol}
-            {discount.toFixed(2)}
+            {discount.toLocaleString()}원
           </span>
         </div>
         <div className={styles.finalPriceRow}>
           <span className={styles.finalPriceLabel}>최종 결제 금액</span>
           <span className={styles.finalPrice}>
-            {currencySymbol}
-            {finalPrice.toFixed(2)}
+            {finalPrice.toLocaleString()}원
           </span>
         </div>
         <div className={styles.cityTaxRow}>
@@ -110,14 +95,13 @@ const PaymentModal = ({
           <span>€{cityTax}</span>
         </div>
         <div className={styles.notice}>
-          표시된 요금은 USD(미국 달러) 기준입니다.
+          표시된 요금은 KRW(대한민국 원) 기준입니다.
           <br />
           현장 결제 금액은 현재 환율을 기준으로 하며, 여행시점에 따라 달라질 수
           있습니다.
         </div>
         <button className={styles.payBtn}>
-          {currencySymbol}
-          {finalPrice.toFixed(2)} / {nights}박 결제하기
+          {finalPrice.toLocaleString()}원 / {nights}박 결제하기
         </button>
       </div>
     </div>
