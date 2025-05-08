@@ -124,6 +124,14 @@ src/
 - 항상 개인 브랜치 → PR → 리뷰 → merge
 - 기능 단위로 커밋
 
+> ⚠️ 모든 작업 브랜치는 `main` 브랜치에서 최신 상태를 기준으로 생성해야 합니다.
+>
+> ```bash
+> git checkout main
+> git pull origin main
+> git checkout -b [작업브랜치명]
+> ```
+
 ```bash
 git checkout main
 git pull origin main
