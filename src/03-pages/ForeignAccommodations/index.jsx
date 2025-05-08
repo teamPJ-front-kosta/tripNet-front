@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import { format } from "date-fns";
+<<<<<<< HEAD
 import { useNavigate } from "react-router-dom";
+=======
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
 
 // 새로 만든 컴포넌트 임포트
 import GuestSelector from "../../02-components/GuestSelector";
@@ -24,7 +27,10 @@ import {
 const ForeignAccommodations = () => {
   // 검색 관련 상태
   const [searchLocation, setSearchLocation] = useState("");
+<<<<<<< HEAD
   const [selectedCityCode, setSelectedCityCode] = useState("");
+=======
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
   const [filteredOptions, setFilteredOptions] = useState([]);
   const [showLocationOptions, setShowLocationOptions] = useState(false);
   const [recentSearches, setRecentSearches] = useState([]);
@@ -91,6 +97,7 @@ const ForeignAccommodations = () => {
       const response = await fetch("/api/foreign-accommodations");
       const data = await response.json();
 
+<<<<<<< HEAD
       // 각 도시코드별 첫 번째 호텔만 추출
       const hotelCards = [];
 
@@ -121,6 +128,24 @@ const ForeignAccommodations = () => {
           });
         }
       });
+=======
+      // API 응답 데이터 변환
+      const hotelCards = data.flatMap((cityData) =>
+        cityData.hotels?.length > 0
+          ? [
+              {
+                id: cityData.hotels[0].hotelId,
+                cityCode: cityData.cityCode,
+                title: cityData.hotels[0].hotelName,
+                subtitle: getCityName(cityData.cityCode),
+                imageUrl: cityData.hotels[0].imageUrl,
+                alt: `${cityData.hotels[0].hotelName} 이미지`,
+                linkUrl: `/hotel/${cityData.cityCode}/${cityData.hotels[0].hotelId}`,
+              },
+            ]
+          : []
+      );
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
 
       setRecommendedHotels(hotelCards);
       setError(null);
@@ -128,6 +153,7 @@ const ForeignAccommodations = () => {
       console.error("호텔 데이터 가져오기 실패:", err);
       setError("데이터를 불러오는데 실패했습니다. 잠시 후 다시 시도해주세요.");
 
+<<<<<<< HEAD
       // 에러 발생 시 기본 데이터 설정 (간소화)
       setRecommendedHotels([
         {
@@ -149,6 +175,27 @@ const ForeignAccommodations = () => {
             "https://cf.bstatic.com/xdata/images/hotel/max1024x768/39389274.jpg",
           alt: "도쿄 호텔 이미지",
           linkUrl: `/hotel/TYO/XKPAR120`,
+=======
+      // 에러 발생 시 기본 데이터 설정
+      setRecommendedHotels([
+        {
+          id: 1,
+          cityCode: "PAR",
+          title: "파리 센터 호텔",
+          subtitle: "파리",
+          imageUrl: "https://source.unsplash.com/featured/?paris,hotel",
+          alt: "파리 호텔 이미지",
+          linkUrl: "/hotel/PAR/1",
+        },
+        {
+          id: 2,
+          cityCode: "TYO",
+          title: "도쿄 스카이 호텔",
+          subtitle: "도쿄",
+          imageUrl: "https://source.unsplash.com/featured/?tokyo,hotel",
+          alt: "도쿄 호텔 이미지",
+          linkUrl: "/hotel/TYO/2",
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
         },
       ]);
     } finally {
@@ -161,6 +208,7 @@ const ForeignAccommodations = () => {
     return cityCodeMap[cityCode] || cityCode;
   };
 
+<<<<<<< HEAD
   // 검색어 입력 처리 (동기화)
   const handleLocationInputChange = (e) => {
     const value = e.target.value;
@@ -170,14 +218,28 @@ const ForeignAccommodations = () => {
       ([code, name]) => name.split(" ")[0] === value.split(" ")[0]
     )?.[0];
     setSelectedCityCode(code || "");
+=======
+  // 검색어 입력 처리
+  const handleLocationInputChange = (e) => {
+    const value = e.target.value;
+    setSearchLocation(value);
+
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
     if (value.trim() === "") {
       setFilteredOptions([]);
       setShowLocationOptions(false);
     } else {
       const trimmedValue = value.trim().toLowerCase();
+<<<<<<< HEAD
       const filtered = destinations
         .filter((option) => option.toLowerCase().includes(trimmedValue))
         .slice(0, 10);
+=======
+      const filtered = destinationOptions
+        .filter((option) => option.toLowerCase().includes(trimmedValue))
+        .slice(0, 10);
+
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
       setFilteredOptions(filtered);
       setShowLocationOptions(true);
     }
@@ -188,6 +250,7 @@ const ForeignAccommodations = () => {
     setSearchLocation(location);
     setShowLocationOptions(false);
 
+<<<<<<< HEAD
     // cityCode 추출 및 상태 저장 - 더 엄격한 매칭
     const code = Object.entries(cityCodeMap).find(
       ([code, name]) => name.split(" ")[0] === location.split(" ")[0]
@@ -200,6 +263,8 @@ const ForeignAccommodations = () => {
       console.warn("No cityCode found for location:", location); // 디버깅용
     }
 
+=======
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
     // 최근 검색어에 추가
     if (!recentSearches.includes(location)) {
       setRecentSearches([location, ...recentSearches.slice(0, 4)]);
@@ -258,6 +323,7 @@ const ForeignAccommodations = () => {
   const handleSearch = () => {
     const params = new URLSearchParams();
 
+<<<<<<< HEAD
     // cityCode가 없으면 검색 불가
     if (!selectedCityCode) {
       alert("도시를 선택해주세요.");
@@ -267,6 +333,9 @@ const ForeignAccommodations = () => {
     // cityCode는 반드시 추가
     params.append("cityCode", selectedCityCode);
 
+=======
+    if (searchLocation) params.append("location", searchLocation);
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
     if (startDate && endDate) {
       params.append("checkIn", format(startDate, "yyyy-MM-dd"));
       params.append("checkOut", format(endDate, "yyyy-MM-dd"));
@@ -274,12 +343,19 @@ const ForeignAccommodations = () => {
     params.append("adults", adultCount);
     if (childCount > 0) params.append("children", childCount);
 
+<<<<<<< HEAD
     console.log("Search URL:", `/foreign/search?${params.toString()}`); // 디버깅용
     navigate(`/foreign/search?${params.toString()}`);
   };
 
   const navigate = useNavigate();
 
+=======
+    console.log(`검색 실행: /search?${params.toString()}`);
+    alert(`검색 실행: /search?${params.toString()}`);
+  };
+
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
   return (
     <div className={styles.mainClass}>
       <h1 className={styles.pageTitle}>해외 숙소</h1>
@@ -311,7 +387,11 @@ const ForeignAccommodations = () => {
             </div>
             <input
               type="text"
+<<<<<<< HEAD
               placeholder="파리, 도쿄, 서울 등 지원 도시만 검색 가능합니다"
+=======
+              placeholder="어디로 떠나시나요?"
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
               value={searchLocation}
               readOnly
               className={styles.inputField}

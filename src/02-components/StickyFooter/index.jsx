@@ -16,7 +16,7 @@ const StickyFooter = ({
   return (
     <div className={footerClass} style={style}>
       <div>
-        <span className={styles.salePrice}>{price.toLocaleString()}</span>
+        <span className={styles.salePrice}>{price.toLocaleString()}원/박</span>
         <span className={styles.marginType}>{marginType}</span>
         <span className={styles.datePeople}>{datePeople}</span>
       </div>
