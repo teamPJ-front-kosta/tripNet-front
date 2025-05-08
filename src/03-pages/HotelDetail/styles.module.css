@@ -100,6 +100,7 @@
 }
 
 .similarGrid {
+<<<<<<< HEAD
   display: flex;
   gap: 28px;
   justify-content: flex-start;
@@ -195,6 +196,19 @@
   font-size: 15px;
   color: #00b894;
   font-weight: 700;
+=======
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.similarHotelCard {
+  transition: transform 0.3s;
+}
+
+.similarHotelCard:hover {
+  transform: translateY(-5px);
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
 }
 
 .bookingSection {
@@ -310,6 +324,7 @@
     padding: 12px 30px;
     font-size: 16px;
   }
+<<<<<<< HEAD
 
   .similarGrid {
     flex-direction: column;
@@ -489,4 +504,6 @@
   opacity: 0.3;
   cursor: default;
   pointer-events: none;
+=======
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
 }

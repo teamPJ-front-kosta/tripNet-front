@@ -3,11 +3,20 @@
   top: calc(100% + 5px);
   left: 0;
   width: 320px;
+<<<<<<< HEAD
+=======
+  height: 280px;
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
   padding: 20px;
   z-index: 1000;
+<<<<<<< HEAD
+=======
+  display: flex;
+  flex-direction: column;
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
 }
 
 @media (max-width: 767px) {
@@ -29,6 +38,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+<<<<<<< HEAD
+=======
+  height: 40px;
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
   margin-bottom: 15px;
   padding: 5px 0;
 }
@@ -83,9 +96,17 @@
 }
 
 .childAgesSection {
+<<<<<<< HEAD
   margin-top: 20px;
   padding-top: 15px;
   border-top: 1px solid #eee;
+=======
+  flex: 1;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  overflow-y: auto;
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
 }
 
 .childAgesTitle {
@@ -100,6 +121,11 @@
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 15px;
+<<<<<<< HEAD
+=======
+  max-height: 80px;
+  overflow-y: auto;
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
 }
 
 .childAgeTag {

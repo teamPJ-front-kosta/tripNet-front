@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import styles from "./styles.module.css";
 import { cityCodeMap } from "../../04-data/destinations";
@@ -19,6 +20,10 @@ const cityToCodeMap = Object.entries(cityCodeMap).reduce(
   },
   {}
 );
+=======
+import React from "react";
+import styles from "./styles.module.css";
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
 
 const SearchModal = ({
   searchLocation,
@@ -34,6 +39,7 @@ const SearchModal = ({
   getLocationDescription,
   onClose,
 }) => {
+<<<<<<< HEAD
   // 지원하지 않는 도시 검색 시 안내 메시지 표시 상태
   const [notSupportedMessage, setNotSupportedMessage] = useState(false);
 
@@ -61,6 +67,8 @@ const SearchModal = ({
     setNotSupportedMessage(matchedCities.length === 0);
   };
 
+=======
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
   return (
     <div className={styles.searchModalOverlay} onClick={onClose}>
       <div
@@ -93,9 +101,20 @@ const SearchModal = ({
               </div>
               <input
                 type="text"
+<<<<<<< HEAD
                 placeholder="파리, 도쿄, 서울 등 지원 도시만 검색 가능합니다"
                 value={searchLocation}
                 onChange={handleInputChange}
+=======
+                placeholder="여행지나 숙소명 검색"
+                value={searchLocation}
+                onChange={handleLocationInputChange}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    onClose();
+                  }
+                }}
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
                 className={styles.searchInput}
                 autoFocus
               />
@@ -104,7 +123,11 @@ const SearchModal = ({
                   className={styles.clearButton}
                   onClick={(e) => {
                     e.stopPropagation();
+<<<<<<< HEAD
                     handleInputChange({ target: { value: "" } });
+=======
+                    handleLocationInputChange({ target: { value: "" } });
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
                   }}
                 >
                   ✕
@@ -115,6 +138,7 @@ const SearchModal = ({
         </div>
 
         <div className={styles.searchContent}>
+<<<<<<< HEAD
           {/* 지원하지 않는 도시 검색 시 안내 메시지 */}
           {notSupportedMessage && (
             <div className={styles.notSupportedMessage}>
@@ -127,6 +151,10 @@ const SearchModal = ({
           {showLocationOptions &&
             filteredOptions.length > 0 &&
             !notSupportedMessage && (
+=======
+          {/* 검색 결과 표시 */}
+          {showLocationOptions && filteredOptions.length > 0 && (
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
             <div className={styles.contentCenter}>
               <div className={styles.searchResults}>
                 <div className={styles.resultsList}>
@@ -140,11 +168,15 @@ const SearchModal = ({
                         {getCountryFlag(option)}
                       </div>
                       <div className={styles.locationInfo}>
+<<<<<<< HEAD
                           <div className={styles.locationName}>
                             {option}{" "}
                             {cityToCodeMap[option] &&
                               `(${cityToCodeMap[option]})`}
                           </div>
+=======
+                        <div className={styles.locationName}>{option}</div>
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
                         <div className={styles.locationDescription}>
                           {getLocationDescription(option)}
                         </div>
@@ -162,6 +194,7 @@ const SearchModal = ({
               <div className={styles.tripNetRecommend}>
                 <h4 className={styles.sectionTitle}>TripNet 추천 지역</h4>
                 <div className={styles.recommendedCards}>
+<<<<<<< HEAD
                   {popularDestinations.map((destination, index) => {
                     // link: "/hotel/PAR/RTPARMAI" 형식에서 cityCode 추출
                     const match = destination.link.match(/\/hotel\/(\w+)\//);
@@ -169,6 +202,11 @@ const SearchModal = ({
                     return (
                       <Link
                         to={`/foreign/search?cityCode=${cityCode}`}
+=======
+                  {popularDestinations.map((destination, index) => (
+                    <a
+                      href={destination.link}
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
                       key={index}
                       className={styles.recommendedCard}
                     >
@@ -186,9 +224,14 @@ const SearchModal = ({
                           {destination.subtitle}
                         </div>
                       </div>
+<<<<<<< HEAD
                       </Link>
                     );
                   })}
+=======
+                    </a>
+                  ))}
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
                 </div>
               </div>
 
@@ -196,6 +239,7 @@ const SearchModal = ({
               <div className={styles.popularRegionsSection}>
                 <h4 className={styles.sectionTitle}>인기 지역</h4>
                 <div className={styles.regionTags}>
+<<<<<<< HEAD
                   {popularRegions.map((region, index) => {
                     // region.link: "/search?region=PAR"에서 cityCode 추출
                     const match = region.link.match(/region=(\w+)/);
@@ -203,13 +247,23 @@ const SearchModal = ({
                     return (
                       <Link
                         to={`/foreign/search?cityCode=${cityCode}`}
+=======
+                  {popularRegions.map((region, index) => (
+                    <a
+                      href={region.link}
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
                       key={index}
                       className={styles.regionTag}
                     >
                       {region.name}
+<<<<<<< HEAD
                       </Link>
                     );
                   })}
+=======
+                    </a>
+                  ))}
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
                 </div>
               </div>
             </div>

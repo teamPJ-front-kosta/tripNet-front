@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import { format } from "date-fns";
@@ -449,3 +450,22 @@ const ForeignAccommodations = () => {
 };
 
 export default ForeignAccommodations;
+=======
+import Search from "./jsx/search.jsx";
+import Suggestion from "./jsx/suggestion.jsx";
+import styles from "./css/styles.module.css";
+
+const DomesticAccommodation = () => {
+  return (
+    <>
+      <div className={styles.mainClass}>
+        <h1 className={styles.pageTitle}>국내 숙소</h1>
+        <Search/>
+        <Suggestion/>
+      </div>
+    </>
+  );
+};
+
+export default DomesticAccommodation;
+>>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
