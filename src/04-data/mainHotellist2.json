@@ -1,0 +1,227 @@
+[
+  {
+    "id": "1",
+    "name": "The Peninsula Paris",
+    "imageUrl": "https://q-xx.bstatic.com/xdata/images/hotel/max500/661822699.jpg?k=48cc4d43ed1a1e7decb0f5a0efb9f3a3368d7492838a61e9b5f045034da9a63a&s=1024x",
+    "description": "샹젤리제와 개선문 인근에 위치한 클래식과 모던이 조화를 이루는 파리 대표 5성급 호텔",
+    "price": 3350000,
+    "currency": "KRW"
+  },
+  {
+    "id": "2",
+    "name": "호텔 드 크리용",
+    "imageUrl": "https://q-xx.bstatic.com/xdata/images/hotel/max500/104377336.jpg?k=a536540e562225d7cdcb8c9fdfddf4caa7b6d75351d400b8f8d17f137dc6d2d2&s=1024x",
+    "description": "콩코르드 광장에 위치한 프랑스 왕실의 품격이 느껴지는 클래식한 럭셔리 호텔",
+    "price": 3200000,
+    "currency": "KRW"
+  },
+  {
+    "id": "3",
+    "name": "르 브리스톨 파리",
+    "imageUrl": "https://q-xx.bstatic.com/xdata/images/hotel/max500/132497911.jpg?k=615d6423fba42d40980b325d9b9d9c2ba5c40260210d4c4f18214fbe1b3751b1&s=1024x",
+    "description": "파리 8구 중심에 자리한 우아한 정원과 미식 레스토랑이 돋보이는 클래식 호텔",
+    "price": 3500000,
+    "currency": "KRW"
+  },
+  {
+    "id": "4",
+    "name": "포시즌 호텔 조지 V 파리",
+    "imageUrl": "https://q-xx.bstatic.com/xdata/images/hotel/max500/509109664.jpg?k=63d32b75a43951253b2ae4ee1c9f35e4a4d8a47a7c718a3478aa35cf59dc589f&s=1024x",
+    "description": "샹젤리제 근처에 위치한 예술적 플라워 데코와 세련된 서비스가 인상적인 고급 호텔",
+    "price": 4300000,
+    "currency": "KRW"
+  },
+  {
+    "id": "5",
+    "name": "더 리츠-칼튼 도쿄",
+    "imageUrl": "https://pix8.agoda.net/hotelImages/6589744/0/0b8d1b0b6d982eac7b6e24cb4a6f0510.jpeg?ce=0&s=1024x",
+    "description": "롯폰기 중심에서 도쿄 시내를 내려다보며 정제된 일본식 환대를 경험할 수 있는 프리미엄 호텔",
+    "price": 410000,
+    "currency": "KRW"
+  },
+  {
+    "id": "6",
+    "name": "파크 하얏트 도쿄",
+    "imageUrl": "https://pix8.agoda.net/hotelImages/910/910/910_110713134205177.jpg?ca=0&ce=1&s=1024x",
+    "description": "신주쿠 상공에 위치한 조용하고 세련된 분위기의 도심 속 숨겨진 호텔",
+    "price": 9210000,
+    "currency": "KRW"
+  },
+  {
+    "id": "7",
+    "name": "만다린 오리엔탈 도쿄",
+    "imageUrl": "https://pix8.agoda.net/hotelImages/3849629/0/a3aac76f7d2defc920d87cdefa98bdf5.jpeg?s=1024x",
+    "description": "도쿄 니혼바시에서 전통과 현대가 어우러진 섬세한 서비스와 전망이 돋보이는 호텔",
+    "price": 1720000,
+    "currency": "KRW"
+  },
+  {
+    "id": "8",
+    "name": "더 페닌슐라 도쿄",
+    "imageUrl": "https://pix8.agoda.net/hotelImages/497719/-1/36134ca195af611dbbe4b512fa217659.jpg?ce=0&s=1024x",
+    "description": "황궁 앞에 위치해 세련된 디자인과 세심한 서비스로 사랑받는 도쿄의 대표 호텔",
+    "price": 1470000,
+    "currency": "KRW"
+  },
+  {
+    "id": "9",
+    "name": "만다린 오리엔탈 방콕",
+    "imageUrl": "https://pix8.agoda.net/hotelImages/10713/-1/dcb71e7fb1704cee26ab545111a360c6.jpg?ca=9&ce=1&s=1024x",
+    "description": "차오프라야강변의 고요함 속에서 전통 태국식 환대와 품격 있는 서비스를 제공하는 클래식 호텔",
+    "price": 870000,
+    "currency": "KRW"
+  },
+  {
+    "id": "10",
+    "name": "더 시암 호텔",
+    "imageUrl": "https://pix8.agoda.net/hotelImages/296/296765/296765_13121811550017924657.jpg?ca=2&ce=1&s=1024x",
+    "description": "차오프라야강변의 감각적인 디자인과 프라이빗한 분위기의 부티크 호텔",
+    "price": 790000,
+    "currency": "KRW"
+  },
+  {
+    "id": "11",
+    "name": "반얀트리 방콕",
+    "imageUrl": "https://pix8.agoda.net/hotelImages/25968348/0/61fc13ba36d270159d2048820824b550.jpeg?ce=0&s=1024x",
+    "description": "도심 속 루프탑 바와 여유로운 스파가 매력적인 호텔",
+    "price": 590000,
+    "currency": "KRW"
+  },
+  {
+    "id": "12",
+    "name": "더 오쿠라 프레스티지 방콕",
+    "imageUrl": "https://pix8.agoda.net/hotelImages/294217/-1/6091fa00da0435c21929aafd7af41cf5.jpg?ce=0&s=1024x",
+    "description": "세련된 일본식 미학과 인피니티 풀로 유명한 고층 호텔",
+    "price": 520000,
+    "currency": "KRW"
+  },
+  {
+    "id": "13",
+    "name": "할레푸나 와이키키 바이 할레쿨라니",
+    "imageUrl": "https://pix8.agoda.net/hotelImages/25451290/0/a0d3e23189c5d0661661e513c576b02b.jpg?ce=0&s=1024x",
+    "description": "와이키키 중심에 위치한 세련되고 모던한 감성의 라이프스타일 호텔",
+    "price": 530000,
+    "currency": "KRW"
+  },
+  {
+    "id": "14",
+    "name": "더 카할라 호텔 앤 리조트",
+    "imageUrl": "https://pix8.agoda.net/hotelImages/46248/-1/3b0c06450fac784fa3dd07bfa4c14faa.jpg?ce=0&s=1024x",
+    "description": "와이키키에서 떨어진 고요한 해변에 위치한 품격 있는 클래식 리조트",
+    "price": 800000,
+    "currency": "KRW"
+  },
+  {
+    "id": "15",
+    "name": "헤일쿨라니 호텔",
+    "imageUrl": "https://pix8.agoda.net/hotelImages/491/49107/49107_15080710330033837911.jpg?ca=5&ce=1&s=1024x",
+    "description": "와이키키 해변 앞, 우아함과 전통이 조화를 이루는 대표 럭셔리 호텔",
+    "price": 1040000,
+    "currency": "KRW"
+  },
+  {
+    "id": "16",
+    "name": "리츠 칼튼 와이키키",
+    "imageUrl": "https://cache.marriott.com/is/image/marriotts7prod/rz-hnlrr-exterior-hero-17020:Wide-Hor?wid=680&fit=constrain",
+    "description": "고층 오션뷰와 프라이빗한 레지던스 스타일이 매력적인 럭셔리 호텔",
+    "price": 920000,
+    "currency": "KRW"
+  },
+  {
+    "id": "17",
+    "name": "샹그릴라 막탄 세부",
+    "imageUrl": "https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/358240370.jpg?k=3fada4dfca5f89dc713b45a123d9fe93ee6ec9ae779295a5cee4ac46b7faba2c&o=&s=1024x",
+    "description": "탁 트인 바다 전망과 넓은 리조트 시설이 돋보이는 휴양형 호텔",
+    "price": 390000,
+    "currency": "KRW"
+  },
+  {
+    "id": "18",
+    "name": "래디슨 블루 세부",
+    "imageUrl": "https://pix8.agoda.net/hotelImages/241405/0/15c570657c520855bc3780aa3741f5cd.jpg?ca=0&ce=1&s=1024x",
+    "description": "세부 시티 중심에서 편리함과 세련된 감성을 갖춘 모던 호텔",
+    "price": 170000,
+    "currency": "KRW"
+  },
+  {
+    "id": "19",
+    "name": "제이파크 아일랜드 리조트 앤 워터파크",
+    "imageUrl": "https://pix8.agoda.net/hotelImages/164680/-1/ec4fe725c948c3adc0351a096a703094.jpg?ca=7&ce=1&s=1024x",
+    "description": "다양한 워터파크 시설과 가족 친화적인 분위기가 매력인 올인원 리조트",
+    "price": 250000,
+    "currency": "KRW"
+  },
+  {
+    "id": "20",
+    "name": "더 리프 아일랜드 리조트 막탄 세부",
+    "imageUrl": "https://pix8.agoda.net/hotelImages/34405403/0/a7b114fd4777b18f7567e49eeaa78cda.jpeg",
+    "description": "모던한 감성과 바다 전망을 갖춘 프라이빗 리조트",
+    "price": 210000,
+    "currency": "KRW"
+  },
+  {
+    "id": "21",
+    "name": "리츠칼튼 오사카",
+    "imageUrl": "https://q-xx.bstatic.com/xdata/images/hotel/max500/623643817.jpg?k=e43c892b83a9810f5267e098dfe2b1ca924bee89cc048ebb263a95251b217450&s=1024x",
+    "description": "고전 유럽풍 인테리어와 정제된 서비스가 어우러진 품격 있는 호텔",
+    "price": 960000,
+    "currency": "KRW"
+  },
+  {
+    "id": "22",
+    "name": "콘래드 오사카",
+    "imageUrl": "https://pix8.agoda.net/hotelImages/2311842/0/39dcb2d0e5374110d87531e6b651d08c.jpg",
+    "description": "오사카 도심을 한눈에 담는 전망과 세련된 디자인의 현대적인 호텔",
+    "price": 980000,
+    "currency": "KRW"
+  },
+  {
+    "id": "23",
+    "name": "오사카 메리어트 미야코 호텔",
+    "imageUrl": "https://images.trvl-media.com/lodging/7000000/6970000/6963700/6963659/5048e74e.jpg?impolicy=resizecrop&rw=1200&rh=800&ra=fill",
+    "description": "일본 최고층에서 펼쳐지는 탁 트인 전망이 인상적인 도심 호텔",
+    "price": 520000,
+    "currency": "KRW"
+  },
+  {
+    "id": "24",
+    "name": "더 세인트 레지스 오사카",
+    "imageUrl": "https://pix8.agoda.net/hotelImages/335/335040/335040_17082909500055792094.jpg?ca=6&ce=1&s=1024x",
+    "description": "정제된 서비스와 클래식한 분위기가 돋보이는 고급스러운 시내 호텔",
+    "price": 1040000,
+    "currency": "KRW"
+  },
+  {
+    "id": "25",
+    "name": "더 레버리 사이공",
+    "imageUrl": "https://pix8.agoda.net/hotelImages/34302044/0/db830beb75c52de9d48cd55724a20290.jpg?ce=0&s=1024x",
+    "description": "화려한 인테리어와 세심한 서비스가 조화를 이루는 호치민 중심의 럭셔리 호텔",
+    "price": 300000,
+    "currency": "KRW"
+  },
+  {
+    "id": "26",
+    "name": "카라벨 사이공 호텔",
+    "imageUrl": "https://pix8.agoda.net/hotelImages/6249915/0/467702455b0eab798c4dbd9594b2435e.jpg?ca=22&ce=0&s=1024x",
+    "description": "도심 오페라하우스 앞, 전통과 현대가 어우러진 클래식 호텔",
+    "price": 240000,
+    "currency": "KRW"
+  },
+  {
+    "id": "27",
+    "name": "호텔 닛코 사이공",
+    "imageUrl": "https://pix8.agoda.net/hotelImages/286608/-1/f211a2a6778374c2ee8bf5cec5fa0435.jpg?ce=0&s=1024x",
+    "description": "넓은 객실과 차분한 분위기가 매력적인 모던 시티 호텔",
+    "price": 170000,
+    "currency": "KRW"
+  },
+  {
+    "id": "28",
+    "name": "소피텔 사이공 플라자 호텔",
+    "imageUrl": "https://pix8.agoda.net/hotelImages/10976/-1/3f17d08d9677d482aa180c06b096e1bf.jpg?ce=0&s=1024x",
+    "description": "프렌치 감성과 도심 전망이 조화를 이루는 세련된 호텔",
+    "price": 340000,
+    "currency": "KRW"
+  }
+  
+]

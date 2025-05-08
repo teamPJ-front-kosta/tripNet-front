@@ -1,0 +1,149 @@
+.account-container {
+  max-width: 700px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  padding: 30px;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.profile-header {
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.profile-image {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+}
+
+.profile-header h3 {
+  margin: 5px 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.profile-header p {
+  font-size: 14px;
+  color: #666;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 10px;
+}
+
+.stats div {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.stats span {
+  display: block;
+  font-size: 12px;
+  color: #888;
+}
+
+.account-section {
+  margin-top: 30px;
+}
+
+.account-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.account-row span {
+  font-size: 14px;
+}
+
+.account-row button {
+  font-size: 12px;
+  padding: 4px 10px;
+  border: 1px solid #ccc;
+  background-color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.toggle-row input[type=\"checkbox\"] {
+  transform: scale(1.2);
+}
+
+.delete-account {
+  text-align: center;
+  margin-top: 30px;
+  color: #888;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.account-row.left-align {
+  justify-content: flex-start;
+  gap: 20px;
+}
+.account-row.left-align > span {
+  width: 100px;
+}
+.account-row.left-align > div {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-login {
+  max-width: 300px;
+  margin: 20px auto;
+  display: block;
+}
+
+.delete-confirm-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 24px;
+  z-index: 999;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  width: 320px;
+  text-align: center;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 998;
+}
+
+.delete-confirm-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.delete-confirm-actions .btn-login {
+  width: 100px;
+  margin: 0;
+}
+
+
