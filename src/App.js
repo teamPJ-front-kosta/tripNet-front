@@ -1,28 +1,40 @@
-<<<<<<< HEAD
 import React, { useRef } from "react";
-=======
-import React from "react";
->>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+
 import Header from "./02-components/Header";
 import Footer from "./02-components/Footer";
-import ForeignAccommodations from "./03-pages/ForeignAccommodations";
-<<<<<<< HEAD
-import DomesticSearchResults from "./03-pages/domesticAccommodation/domesticSearchResults";
+
+import StayAbroad from "./03-pages/StayAbroad";
 import KoreanGuestHouse from "./03-pages/KoreanGuestHouse";
+import ForeignAccommodations from "./03-pages/ForeignAccommodations";
+import DomesticSearchResults from "./03-pages/domesticAccommodation/domesticSearchResults";
 import HotelDetail from "./03-pages/HotelDetail";
 import DomesticHotelDetail from "./03-pages/domesticAccommodation/domesticHotelDetail/index";
 import HotelOptionDetail from "./03-pages/HotelDetail/HotelOptionDetail";
 import DomesticHotelOptionDetail from "./03-pages/domesticAccommodation/domesticHotelDetail/HotelOptionDetail";
 import DomesticAccommodation from "./03-pages/domesticAccommodation";
-=======
-import KoreanGuestHouse from "./03-pages/KoreanGuestHouse";
-import HotelDetail from "./03-pages/HotelDetail";
-import DomesticAccommodations from "./03-pages/domesticAccommodation";
-import SearchResults from "./03-pages/domesticAccommodation/jsx/searchResults";
-import HotelDetails from "./03-pages/domesticAccommodation/jsx/hotelDetails";
->>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
+
+import TicketPage from "./03-pages/ticket/ticketPage";
+import TicketDetail from "./03-pages/ticket/ticketDetail";
+import OrderPage from "./03-pages/ticket/orderPage";
+
+// 티켓 전용 데이터
+const amadeusTickets = [
+  {
+    id: "6378972",
+    name: "Master Korean Food with a Chef [live online class]",
+    location: { name: "서울" },
+    rating: 4,
+    reviewCount: 0,
+    price: { amount: "15.0", currencyCode: "USD" },
+    pictures: [
+      "https://screen-api.vizeater.co/files/1428866/-/preview/-/progressive/yes/-/format/jpeg/image.jpg",
+    ],
+    badges: ["즉시확정", "최대 12개월 무이자 할부 가능"],
+    validDate: "2025.06.30",
+  },
+];
 
 function App() {
   const footerRef = useRef(null);
@@ -32,18 +44,15 @@ function App() {
       <div className="App">
         <Header />
         <main className="main-content">
-<<<<<<< HEAD
-        <Routes>
-=======
           <Routes>
->>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
+            {/* 숙소 관련 라우트 */}
             <Route path="/" element={<ForeignAccommodations />} />
             <Route
               path="/foreign-accommodations"
               element={<ForeignAccommodations />}
             />
-<<<<<<< HEAD
-          <Route path="/korean-guest-house" element={<KoreanGuestHouse />} />
+            <Route path="/stay-abroad" element={<StayAbroad />} />
+            <Route path="/korean-guest-house" element={<KoreanGuestHouse />} />
             <Route
               path="/hotel/:cityCode/:hotelId"
               element={<HotelDetail footerRef={footerRef} />}
@@ -62,30 +71,25 @@ function App() {
             />
             <Route path="/foreign" element={<ForeignAccommodations />} />
             <Route path="/korean" element={<KoreanGuestHouse />} />
-            <Route path="/domestic" element={<DomesticAccommodation />} />
-            <Route path="/domestic/search/results" element={<DomesticSearchResults />} />
-        </Routes>
-        </main>
-        <Footer ref={footerRef} />
-=======
             <Route
-              path="/domestic-accommodations"
-              element={<DomesticAccommodations />}
+              path="/domestic"
+              element={<DomesticAccommodation />}
             />
-            <Route path="/korean-guest-house" element={<KoreanGuestHouse />} />
-            <Route path="/hotel/:cityCode/:hotelId" element={<HotelDetail />} />
             <Route
               path="/domestic/search/results"
-              element={<SearchResults />}
+              element={<DomesticSearchResults />}
             />
+
+            {/* 티켓 관련 라우트 */}
+            <Route path="/tour-ticket" element={<TicketPage />} />
             <Route
-              path="/domestic/hotel-details/:hotelId"
-              element={<HotelDetails />}
+              path="/ticket/:id"
+              element={<TicketDetail amadeusTickets={amadeusTickets} />}
             />
+            <Route path="/order-page" element={<OrderPage />} />
           </Routes>
         </main>
-        <Footer />
->>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
+        <Footer ref={footerRef} />
       </div>
     </Router>
   );
