@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import { format } from "date-fns";
@@ -22,7 +21,7 @@ import {
   getLocationDescription,
 } from "../../05-utils/countryUtils";
 
-const ForeignAccommodations = () => {
+const DomesticAccommodation = () => {
   // 검색 관련 상태
   const [searchLocation, setSearchLocation] = useState("");
   const [selectedCityCode, setSelectedCityCode] = useState("");
@@ -91,7 +90,7 @@ const ForeignAccommodations = () => {
     try {
       const response = await fetch("/api/domestic-accommodations");
       const data = await response.json();
-      console.log("Response:", data); 
+      console.log("Response:", data);
       // API 응답이 배열인지 확인
       if (!Array.isArray(data)) {
         throw new Error("Invalid API response format");
@@ -116,7 +115,9 @@ const ForeignAccommodations = () => {
               hotelName: hotel.hotelName,
               cityCode: cityCode,
               subtitle: getCityName(cityCode),
-              imageUrl: hotel.imageUrl || "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80",
+              imageUrl:
+                hotel.imageUrl ||
+                "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80",
               alt: `${hotel.hotelName} 이미지`,
               linkUrl: `/domestic/hotel/${cityCode}/${hotel.hotelId}`,
             });
@@ -137,7 +138,8 @@ const ForeignAccommodations = () => {
           hotelName: "서울 그랜드 호텔",
           cityCode: "SEL",
           subtitle: "서울",
-          imageUrl: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80",
+          imageUrl:
+            "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80",
           alt: "서울 호텔 이미지",
           linkUrl: "/domestic/hotel/SEL/SELHTL01",
         },
@@ -146,7 +148,8 @@ const ForeignAccommodations = () => {
           hotelName: "부산 해운대 호텔",
           cityCode: "PUS",
           subtitle: "부산",
-          imageUrl: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80",
+          imageUrl:
+            "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80",
           alt: "부산 호텔 이미지",
           linkUrl: "/domestic/hotel/PUS/PUSHTL01",
         },
@@ -155,7 +158,8 @@ const ForeignAccommodations = () => {
           hotelName: "제주 서귀포 호텔",
           cityCode: "CJU",
           subtitle: "제주",
-          imageUrl: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80",
+          imageUrl:
+            "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80",
           alt: "제주 호텔 이미지",
           linkUrl: "/domestic/hotel/CJU/CJUHTL01",
         },
@@ -186,7 +190,7 @@ const ForeignAccommodations = () => {
     const filtered = Object.values(cityCodeMap)
       .filter((city) => city.includes(value.trim()))
       .slice(0, 10);
-    
+
     setFilteredOptions(filtered);
     setShowLocationOptions(true);
 
@@ -436,6 +440,7 @@ const ForeignAccommodations = () => {
           getCountryFlag={getCountryFlag}
           getLocationDescription={getLocationDescription}
           onClose={closeSearchModal}
+          searchResultBasePath="/domestic/search/results"
         />
       )}
 
@@ -449,23 +454,4 @@ const ForeignAccommodations = () => {
   );
 };
 
-export default ForeignAccommodations;
-=======
-import Search from "./jsx/search.jsx";
-import Suggestion from "./jsx/suggestion.jsx";
-import styles from "./css/styles.module.css";
-
-const DomesticAccommodation = () => {
-  return (
-    <>
-      <div className={styles.mainClass}>
-        <h1 className={styles.pageTitle}>국내 숙소</h1>
-        <Search/>
-        <Suggestion/>
-      </div>
-    </>
-  );
-};
-
 export default DomesticAccommodation;
->>>>>>> 802e1845c523473f5d3702e20a056428b34381d1

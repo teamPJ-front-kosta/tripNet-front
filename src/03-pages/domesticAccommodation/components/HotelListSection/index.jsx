@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 import EventCard from "../../../../02-components/EventCard";
-import { cityCodeMap } from "../../../../04-data/destinations";
+import { domesticCityCodeMap as cityCodeMap } from "../../../../04-data/destinations";
 
 const HotelListSection = ({ loading, error, hotels }) => {
   if (loading) {

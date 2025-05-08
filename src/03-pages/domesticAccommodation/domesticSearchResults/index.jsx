@@ -6,7 +6,7 @@ import styles from "./styles.module.css";
 import HotelCard from "../../../02-components/HotelCard";
 import ForeignSearchFilter from "../../../02-components/ForeignSearchFilter";
 import SortSelector from "../../../02-components/SortSelector";
-import { cityCodeMap } from "../../../04-data/destinations";
+import { domesticCityCodeMap as cityCodeMap } from "../../../04-data/destinations";
 
 const DomesticSearchResults = () => {
   const location = useLocation();
@@ -150,13 +150,16 @@ const DomesticSearchResults = () => {
                   key={hotel.hotelId}
                   hotel={hotel}
                   onClick={() =>
-                    navigate(`/domestic/hotel/${hotel.cityCode}/${hotel.hotelId}`, {
-                      state: {
-                        checkIn: searchCriteria.checkIn,
-                        checkOut: searchCriteria.checkOut,
-                        adults: searchCriteria.adults,
-                      },
-                    })
+                    navigate(
+                      `/domestic/hotel/${hotel.cityCode}/${hotel.hotelId}`,
+                      {
+                        state: {
+                          checkIn: searchCriteria.checkIn,
+                          checkOut: searchCriteria.checkOut,
+                          adults: searchCriteria.adults,
+                        },
+                      }
+                    )
                   }
                 />
               ))

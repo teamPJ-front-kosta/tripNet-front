@@ -2,15 +2,9 @@ import React from "react";
 import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
 
-<<<<<<< HEAD
 const Footer = React.forwardRef(function Footer(props, ref) {
   return (
     <footer ref={ref} className={styles.footer}>
-=======
-const Footer = () => {
-  return (
-    <footer className={styles.footer}>
->>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
       <div className={styles.container}>
         <div className={styles.footerContent}>
           <div className={styles.footerSection}>
@@ -128,12 +122,8 @@ const Footer = () => {
       </div>
     </footer>
   );
-<<<<<<< HEAD
 });
 
 Footer.displayName = "Footer";
-=======
-};
->>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
 
 export default Footer;
