@@ -1,29 +1,6 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
 import styles from "./styles.module.css";
-import { cityCodeMap } from "../../04-data/destinations";
 import { Link } from "react-router-dom";
-
-// 도시명으로 도시코드 찾기 위한 역방향 매핑 추가
-const cityToCodeMap = Object.entries(cityCodeMap).reduce(
-  (acc, [code, city]) => {
-    // 도시 이름에서 괄호 부분 제거하여 기본 매핑
-    const baseName = city.split(" (")[0];
-    acc[baseName] = code;
-
-    // '하와이' 추가 매핑
-    if (code === "HNL") {
-      acc["하와이"] = code;
-    }
-
-    return acc;
-  },
-  {}
-);
-=======
-import React from "react";
-import styles from "./styles.module.css";
->>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
 
 const SearchModal = ({
   searchLocation,
@@ -38,37 +15,37 @@ const SearchModal = ({
   getCountryFlag,
   getLocationDescription,
   onClose,
+  cityCodeMap,
+  notSupportedMessageText = "지원하지 않는 도시입니다.",
+  placeholder = "도시를 입력하세요",
+  searchResultBasePath = "/foreign/search",
 }) => {
-<<<<<<< HEAD
-  // 지원하지 않는 도시 검색 시 안내 메시지 표시 상태
+  // 도시명으로 도시코드 찾기 위한 역방향 매핑
+  const cityToCodeMap = Object.entries(cityCodeMap || {}).reduce(
+    (acc, [code, city]) => {
+      acc[city.split(" (")[0]] = code;
+      return acc;
+    },
+    {}
+  );
+
   const [notSupportedMessage, setNotSupportedMessage] = useState(false);
 
-  // 검색 입력 처리 수정 - 지원 도시만 필터링
   const handleInputChange = (e) => {
     const value = e.target.value;
-
-    // 검색어가 없는 경우
     if (value.trim() === "") {
       setNotSupportedMessage(false);
-      handleLocationInputChange(e); // 원래 핸들러 호출
+      handleLocationInputChange(e);
       return;
     }
-
-    // 기존 핸들러 호출하여 filteredOptions 업데이트
     handleLocationInputChange(e);
-
-    // 지원 도시 확인 - cityCodeMap의 값(도시명) 중에 있는지 체크
     const supportedCities = Object.values(cityCodeMap);
     const matchedCities = supportedCities.filter((city) =>
       city.toLowerCase().includes(value.trim().toLowerCase())
     );
-
-    // 매칭된 도시가 없으면 안내 메시지 표시
     setNotSupportedMessage(matchedCities.length === 0);
   };
 
-=======
->>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
   return (
     <div className={styles.searchModalOverlay} onClick={onClose}>
       <div
@@ -81,7 +58,6 @@ const SearchModal = ({
             ✕
           </button>
         </div>
-
         <div className={styles.searchContainer}>
           <div className={styles.searchInputWrapper}>
             <div className={styles.searchInputContainer}>
@@ -101,20 +77,9 @@ const SearchModal = ({
               </div>
               <input
                 type="text"
-<<<<<<< HEAD
-                placeholder="파리, 도쿄, 서울 등 지원 도시만 검색 가능합니다"
+                placeholder={placeholder}
                 value={searchLocation}
                 onChange={handleInputChange}
-=======
-                placeholder="여행지나 숙소명 검색"
-                value={searchLocation}
-                onChange={handleLocationInputChange}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
-                    onClose();
-                  }
-                }}
->>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
                 className={styles.searchInput}
                 autoFocus
               />
@@ -123,11 +88,7 @@ const SearchModal = ({
                   className={styles.clearButton}
                   onClick={(e) => {
                     e.stopPropagation();
-<<<<<<< HEAD
                     handleInputChange({ target: { value: "" } });
-=======
-                    handleLocationInputChange({ target: { value: "" } });
->>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
                   }}
                 >
                   ✕
@@ -136,134 +97,92 @@ const SearchModal = ({
             </div>
           </div>
         </div>
-
         <div className={styles.searchContent}>
-<<<<<<< HEAD
-          {/* 지원하지 않는 도시 검색 시 안내 메시지 */}
           {notSupportedMessage && (
             <div className={styles.notSupportedMessage}>
-              현재 파리, 도쿄, 서울, 방콕, 호놀룰루, 세부, 오사카, 호치민 등 8개
-              도시만 지원합니다.
+              {notSupportedMessageText}
             </div>
           )}
-
-          {/* 검색 결과 표시 - 도시코드 추가 */}
           {showLocationOptions &&
             filteredOptions.length > 0 &&
             !notSupportedMessage && (
-=======
-          {/* 검색 결과 표시 */}
-          {showLocationOptions && filteredOptions.length > 0 && (
->>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
-            <div className={styles.contentCenter}>
-              <div className={styles.searchResults}>
-                <div className={styles.resultsList}>
-                  {filteredOptions.map((option, index) => (
-                    <div
-                      key={index}
-                      className={styles.resultItem}
-                      onClick={() => handleLocationSelect(option)}
-                    >
-                      <div className={styles.locationFlag}>
-                        {getCountryFlag(option)}
-                      </div>
-                      <div className={styles.locationInfo}>
-<<<<<<< HEAD
+              <div className={styles.contentCenter}>
+                <div className={styles.searchResults}>
+                  <div className={styles.resultsList}>
+                    {filteredOptions.map((option, index) => (
+                      <div
+                        key={index}
+                        className={styles.resultItem}
+                        onClick={() => handleLocationSelect(option)}
+                      >
+                        <div className={styles.locationFlag}>
+                          {getCountryFlag(option)}
+                        </div>
+                        <div className={styles.locationInfo}>
                           <div className={styles.locationName}>
                             {option}{" "}
                             {cityToCodeMap[option] &&
                               `(${cityToCodeMap[option]})`}
                           </div>
-=======
-                        <div className={styles.locationName}>{option}</div>
->>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
-                        <div className={styles.locationDescription}>
-                          {getLocationDescription(option)}
+                          <div className={styles.locationDescription}>
+                            {getLocationDescription(option)}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
-
-          {/* 검색창에 입력이 없을 때 기본 표시 내용 */}
+            )}
           {!showLocationOptions && (
             <div className={styles.contentCenter}>
               <div className={styles.tripNetRecommend}>
                 <h4 className={styles.sectionTitle}>TripNet 추천 지역</h4>
                 <div className={styles.recommendedCards}>
-<<<<<<< HEAD
                   {popularDestinations.map((destination, index) => {
-                    // link: "/hotel/PAR/RTPARMAI" 형식에서 cityCode 추출
                     const match = destination.link.match(/\/hotel\/(\w+)\//);
                     const cityCode = match ? match[1] : "";
                     return (
                       <Link
-                        to={`/foreign/search?cityCode=${cityCode}`}
-=======
-                  {popularDestinations.map((destination, index) => (
-                    <a
-                      href={destination.link}
->>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
-                      key={index}
-                      className={styles.recommendedCard}
-                    >
-                      <img
-                        src={destination.image}
-                        alt={destination.name}
-                        className={styles.recommendedImage}
-                      />
-                      <div className={styles.gradientOverlay}></div>
-                      <div className={styles.recommendedInfo}>
-                        <div className={styles.recommendedName}>
-                          {destination.name}
+                        to={`${searchResultBasePath}?cityCode=${cityCode}`}
+                        key={index}
+                        className={styles.recommendedCard}
+                      >
+                        <img
+                          src={destination.image}
+                          alt={destination.name}
+                          className={styles.recommendedImage}
+                        />
+                        <div className={styles.gradientOverlay}></div>
+                        <div className={styles.recommendedInfo}>
+                          <div className={styles.recommendedName}>
+                            {destination.name}
+                          </div>
+                          <div className={styles.recommendedSubtitle}>
+                            {destination.subtitle}
+                          </div>
                         </div>
-                        <div className={styles.recommendedSubtitle}>
-                          {destination.subtitle}
-                        </div>
-                      </div>
-<<<<<<< HEAD
                       </Link>
                     );
                   })}
-=======
-                    </a>
-                  ))}
->>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
                 </div>
               </div>
-
-              {/* 인기 지역 태그 */}
               <div className={styles.popularRegionsSection}>
                 <h4 className={styles.sectionTitle}>인기 지역</h4>
                 <div className={styles.regionTags}>
-<<<<<<< HEAD
                   {popularRegions.map((region, index) => {
-                    // region.link: "/search?region=PAR"에서 cityCode 추출
                     const match = region.link.match(/region=(\w+)/);
                     const cityCode = match ? match[1] : "";
                     return (
                       <Link
-                        to={`/foreign/search?cityCode=${cityCode}`}
-=======
-                  {popularRegions.map((region, index) => (
-                    <a
-                      href={region.link}
->>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
-                      key={index}
-                      className={styles.regionTag}
-                    >
-                      {region.name}
-<<<<<<< HEAD
+                        to={`${searchResultBasePath}?cityCode=${cityCode}`}
+                        key={index}
+                        className={styles.regionTag}
+                      >
+                        {region.name}
                       </Link>
                     );
                   })}
-=======
-                    </a>
-                  ))}
->>>>>>> 802e1845c523473f5d3702e20a056428b34381d1
                 </div>
               </div>
             </div>

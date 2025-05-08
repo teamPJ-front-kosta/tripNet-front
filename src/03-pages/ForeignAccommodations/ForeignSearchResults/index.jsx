@@ -3,10 +3,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 
 // 컴포넌트 import
-import HotelCard from "../../02-components/HotelCard";
-import ForeignSearchFilter from "../../02-components/ForeignSearchFilter";
-import SortSelector from "../../02-components/SortSelector";
-import { cityCodeMap } from "../../04-data/destinations";
+import HotelCard from "../../../02-components/HotelCard";
+import ForeignSearchFilter from "../../../02-components/ForeignSearchFilter";
+import SortSelector from "../../../02-components/SortSelector";
+import { foreignCityCodeMap as cityCodeMap } from "../../../04-data/destinations";
 
 const ForeignSearchResults = () => {
   const location = useLocation();
@@ -37,15 +37,17 @@ const ForeignSearchResults = () => {
   const [hotels, setHotels] = useState([]);
 
   useEffect(() => {
-    fetch("/api/domestic-accommodations")
+    fetch("/api/foreign-accommodations")
       .then((res) => res.json())
       .then((data) => {
         // cityCode별로 hotels만 평탄화
         const allHotels = data.flatMap((city) =>
-          city.hotels.map((hotel) => ({
-            ...hotel,
-            cityCode: city.cityCode,
-          }))
+          city.hotels
+            .filter((hotel) => hotel.offers && hotel.offers.length > 0)
+            .map((hotel) => ({
+              ...hotel,
+              cityCode: city.cityCode,
+            }))
         );
         setHotels(allHotels);
       });
@@ -130,7 +132,6 @@ const ForeignSearchResults = () => {
             {filteredHotels.length === 0 ? (
               <div className={styles.noResult}>검색 결과가 없습니다.</div>
             ) : (
-              console.log("filteredHotels:", filteredHotels),
               filteredHotels.map((hotel) => (
                 <HotelCard
                   key={hotel.hotelId}
@@ -138,6 +139,7 @@ const ForeignSearchResults = () => {
                   onClick={() =>
                     navigate(`/hotel/${hotel.cityCode}/${hotel.hotelId}`, {
                       state: {
+                        from: "foreign-accommodation",
                         checkIn: searchCriteria.checkIn,
                         checkOut: searchCriteria.checkOut,
                         adults: searchCriteria.adults,
