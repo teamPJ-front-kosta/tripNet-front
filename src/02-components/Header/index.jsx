@@ -38,7 +38,9 @@ function Header() {
             <li>
               <Link to="/foreign-accommodations">해외 숙소</Link>
             </li>
-            <li>국내 숙소</li>
+            <li>
+              <Link to="/domestic">국내 숙소</Link>
+            </li>
             <li>투어·티켓</li>
             <li>
               <Link to="/korean-guest-house">한인민박</Link>

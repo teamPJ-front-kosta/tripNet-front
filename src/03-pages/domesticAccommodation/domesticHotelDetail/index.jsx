@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
-import { mockReviews } from "../../04-data/mockReviews";
+import { mockReviews } from "../../../04-data/mockReviews.js";
 import styles from "./styles.module.css";
-import EventCard from "../../02-components/EventCard";
 import HotelSummaryCard from "./HotelSummaryCard";
 import HotelOffersList from "./HotelOffersList";
 import HotelMap from "./HotelMap";
-import StickyFooter from "../../02-components/StickyFooter";
+import StickyFooter from "../../../02-components/StickyFooter/index.jsx";
 
 const HotelDetail = ({ footerRef }) => {
   const { cityCode, hotelId } = useParams();
@@ -31,7 +30,9 @@ const HotelDetail = ({ footerRef }) => {
 
   // 가격/날짜/인원/제로마진 정보 (HotelSummaryCard와 동일하게)
   const offers = hotel?.offers || [];
-  const price = offers[0]?.displayPrice || 220527;
+  const priceUSD = Number(offers[0]?.price?.total) || 0;
+  const price =
+    priceUSD > 0 ? `$${priceUSD.toFixed(2)} / 1박` : "가격 정보 없음";
   const marginType = "제로마진";
   const datePeople = `${formatDate(searchParams.checkIn)} ~ ${formatDate(
     searchParams.checkOut
@@ -56,7 +57,7 @@ const HotelDetail = ({ footerRef }) => {
       setLoading(true);
       try {
         // API 호출하여 모든 호텔 데이터 가져오기
-        const response = await fetch("/api/foreign-accommodations");
+        const response = await fetch("/api/domestic-accommodations");
         const data = await response.json();
 
         // 현재 도시 코드에 맞는 도시 데이터 찾기
@@ -141,8 +142,6 @@ const HotelDetail = ({ footerRef }) => {
       PAR: "파리",
       TYO: "도쿄",
       SEL: "서울",
-      PUS: "부산",
-      CJU: "제주",
       BKK: "방콕",
       HNL: "호놀룰루",
       CEB: "세부",
@@ -181,9 +180,7 @@ const HotelDetail = ({ footerRef }) => {
 
   return (
     <div className={styles.container} style={{ position: "relative" }}>
-      <Link to="/" className={styles.backLink}>
-        &larr; 일정 다시 검색하기
-      </Link>
+      {/* '일정 다시 검색하기' 링크 삭제됨 */}
 
       {/* 1. 호텔 요약 카드 - detailSection 박스 */}
       <div className={styles.detailSection}>
@@ -281,43 +278,41 @@ const HotelDetail = ({ footerRef }) => {
 
       {similarHotels.length > 0 && (
         <div className={styles.detailSection}>
-          <h2 className={styles.similarTitle}>{console.log(cityCode)}{getCityName(cityCode)}의 다른 호텔</h2>
+          <h2 className={styles.similarTitle}>{getCityName(cityCode)}의 다른 호텔</h2>
           <div className={styles.similarGrid}>
             {similarHotels.map((similarHotel, idx) => (
               <div
                 key={similarHotel.hotelId}
                 className={styles.similarHotelCard}
               >
-                <Link to={`/domestic/hotel/${cityCode}/${similarHotel.hotelId}/option/${similarHotel.offers?.[0]?.roomId || 'STA103'}`}>
-                  <div className={styles.similarCardImageWrap}>
-                    <img
-                      src={similarHotel.imageUrl}
-                      alt={similarHotel.hotelName}
-                      className={styles.similarCardImage}
-                    />
+                <div className={styles.similarCardImageWrap}>
+                  <img
+                    src={similarHotel.imageUrl}
+                    alt={similarHotel.hotelName}
+                    className={styles.similarCardImage}
+                  />
+                </div>
+                <div className={styles.similarCardInfo}>
+                  <div className={styles.similarCardHotelName}>
+                    {similarHotel.hotelName}
                   </div>
-                  <div className={styles.similarCardInfo}>
-                    <div className={styles.similarCardHotelName}>
-                      {similarHotel.hotelName}
-                    </div>
-                    <div className={styles.similarCardRatingRow}>
-                      <span className={styles.similarCardStar}>★</span>
-                      <span className={styles.similarCardRating}>
-                        {(4.2 + idx * 0.2).toFixed(1)}
-                      </span>
-                      <span className={styles.similarCardReviewCount}>
-                        (1{idx}3{idx}개)
-                      </span>
-                    </div>
-                    <div className={styles.similarCardPrice}>
-                      {(500000 + idx * 10000).toLocaleString()}원/박
-                    </div>
-                    <div className={styles.similarCardGrade}>
-                      4성급 · 아파트호텔
-                    </div>
-                    <div className={styles.similarCardMargin}>제로마진</div>
+                  <div className={styles.similarCardRatingRow}>
+                    <span className={styles.similarCardStar}>★</span>
+                    <span className={styles.similarCardRating}>
+                      {(4.2 + idx * 0.2).toFixed(1)}
+                    </span>
+                    <span className={styles.similarCardReviewCount}>
+                      (1{idx}3{idx}개)
+                    </span>
                   </div>
-                </Link>
+                  <div className={styles.similarCardPrice}>
+                    {(500000 + idx * 10000).toLocaleString()}원/박
+                  </div>
+                  <div className={styles.similarCardGrade}>
+                    4성급 · 아파트호텔
+                  </div>
+                  <div className={styles.similarCardMargin}>제로마진</div>
+                </div>
               </div>
             ))}
           </div>

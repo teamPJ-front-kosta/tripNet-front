@@ -3,12 +3,12 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 
 // 컴포넌트 import
-import HotelCard from "../../02-components/HotelCard";
-import ForeignSearchFilter from "../../02-components/ForeignSearchFilter";
-import SortSelector from "../../02-components/SortSelector";
-import { cityCodeMap } from "../../04-data/destinations";
+import HotelCard from "../../../02-components/HotelCard";
+import ForeignSearchFilter from "../../../02-components/ForeignSearchFilter";
+import SortSelector from "../../../02-components/SortSelector";
+import { cityCodeMap } from "../../../04-data/destinations";
 
-const ForeignSearchResults = () => {
+const DomesticSearchResults = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
@@ -40,14 +40,29 @@ const ForeignSearchResults = () => {
     fetch("/api/domestic-accommodations")
       .then((res) => res.json())
       .then((data) => {
+        // 데이터가 배열인지 확인
+        if (!Array.isArray(data)) {
+          console.error("Received data is not an array:", data);
+          setHotels([]);
+          return;
+        }
+
         // cityCode별로 hotels만 평탄화
-        const allHotels = data.flatMap((city) =>
-          city.hotels.map((hotel) => ({
+        const allHotels = data.flatMap((city) => {
+          if (!city || !Array.isArray(city.hotels)) {
+            console.warn("Invalid city data:", city);
+            return [];
+          }
+          return city.hotels.map((hotel) => ({
             ...hotel,
             cityCode: city.cityCode,
-          }))
-        );
+          }));
+        });
         setHotels(allHotels);
+      })
+      .catch((error) => {
+        console.error("Error fetching hotels:", error);
+        setHotels([]);
       });
   }, []);
 
@@ -130,13 +145,12 @@ const ForeignSearchResults = () => {
             {filteredHotels.length === 0 ? (
               <div className={styles.noResult}>검색 결과가 없습니다.</div>
             ) : (
-              console.log("filteredHotels:", filteredHotels),
               filteredHotels.map((hotel) => (
                 <HotelCard
                   key={hotel.hotelId}
                   hotel={hotel}
                   onClick={() =>
-                    navigate(`/hotel/${hotel.cityCode}/${hotel.hotelId}`, {
+                    navigate(`/domestic/hotel/${hotel.cityCode}/${hotel.hotelId}`, {
                       state: {
                         checkIn: searchCriteria.checkIn,
                         checkOut: searchCriteria.checkOut,
@@ -154,4 +168,4 @@ const ForeignSearchResults = () => {
   );
 };
 
-export default ForeignSearchResults;
+export default DomesticSearchResults;

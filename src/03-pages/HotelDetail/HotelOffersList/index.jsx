@@ -71,14 +71,14 @@ const HotelOffersList = ({ offers, checkIn, checkOut, adults, children }) => {
               <div className={styles.priceRow}>
                 <span className={styles.price}>
                   {offer.price?.total
-                    ? `$${offer.price.total} / 1박`
+                    ? `${(offer.price.total * 1300).toLocaleString()}원 / 1박`
                     : "가격 정보 없음"}
                 </span>
                 <button
                   className={styles.optionBtn}
                   onClick={() =>
                     navigate(
-                      `/hotel/${cityCode}/${hotelId}/option/${offer.id}`,
+                      `/domestic/hotel/${cityCode}/${hotelId}/option/${offer.id}`,
                       {
                         state: {
                           checkIn,
